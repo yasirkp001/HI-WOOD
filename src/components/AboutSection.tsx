@@ -41,10 +41,10 @@ const AboutSection = () => {
             <div className="relative group">
               <div className="absolute -inset-4 bg-primary/10 blur-2xl rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <Image
-                src="/images/about-logs.jpg"
-                alt="High-quality timber logs at HI WOOD workshop"
+                src="/images/about-forest.jpg"
+                alt="Natural forest - the source of HI WOOD timber"
                 width={800}
-                height={600}
+                height={1200}
                 className="relative w-full h-full object-cover rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-700 group-hover:scale-[1.02]"
               />
               {/* Floating Badge */}
