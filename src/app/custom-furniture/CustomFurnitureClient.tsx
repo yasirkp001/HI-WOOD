@@ -150,7 +150,7 @@ export default function CustomFurnitureClient() {
         </section>
 
         {/* Legacy & Innovation Section */}
-        <section className="py-32 relative overflow-hidden bg-neutral-50">
+        <section className="py-32 relative overflow-hidden bg-white">
           <div className="container mx-auto px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <motion.div 
@@ -161,7 +161,7 @@ export default function CustomFurnitureClient() {
               >
                 <div className="relative aspect-square md:aspect-video lg:aspect-square rounded-[40px] overflow-hidden border border-black/10">
                   <Image 
-                    src="/images/timber-production.jpg" 
+                    src="/images/about-forest.jpg" 
                     alt="Legacy & Innovation" 
                     fill 
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -171,7 +171,7 @@ export default function CustomFurnitureClient() {
                 </div>
                 {/* Floating badge */}
                 <div className="absolute -bottom-6 -right-6 bg-primary p-8 rounded-[32px] hidden md:block shadow-2xl">
-                  <p className="text-4xl font-black text-white leading-none">25+</p>
+                  <p className="text-4xl font-black text-white leading-none">30+</p>
                   <p className="text-[10px] font-black uppercase tracking-widest text-white/70 mt-2">Years of <br />Mastery</p>
                 </div>
               </motion.div>
