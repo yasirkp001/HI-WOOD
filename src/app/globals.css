@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* Design tokens */
+@theme inline {
+  --color-cream: #FAF7EB;
+  --color-sand: #EECB88;
+  --color-peach: #EB975E;
+  --color-terracotta: #CB6F4A;
+  --color-rust: #AB4F41;
+  --color-maroon: #5D1F1E;
+
+  --color-primary: #00A651;
+  --color-accent: #E31E24;
+  --color-terracotta: #E31E24;
+  --color-sand: #00A651;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui;
+  --font-serif: var(--font-montserrat), ui-serif, Georgia;
+}
+
+/* Tailwind base layer with dark mode variables */
+@layer base {
+  :root {
+    --background: #ffffff; /* Light background */
+    --foreground: #171717; /* Light text */
+  }
+  .dark {
+    --background: #121212; /* Dark background */
+    --foreground: #faf7eb; /* Dark text */
+  }
+}
+
+/* Utilities applying background and text colors */
+@layer utilities {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+  }
+}
+
+/* Autofill styling */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: white !important;
+}
+
+.light-form input:-webkit-autofill,
+.light-form input:-webkit-autofill:hover,
+.light-form input:-webkit-autofill:focus,
+.light-form input:-webkit-autofill:active {
+  -webkit-text-fill-color: black !important;
+}

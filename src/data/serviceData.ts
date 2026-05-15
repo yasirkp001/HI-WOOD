@@ -1,0 +1,165 @@
+import React from 'react';
+import { Shield, Settings, Droplets, Clock, Truck, MapPin, CheckCircle } from 'lucide-react';
+
+export interface ServiceFeature {
+  icon: React.ElementType;
+  title: string;
+  desc: string;
+}
+
+export interface ServiceSpec {
+  label: string;
+  value: string;
+}
+
+export interface WorkflowStep {
+  step: string;
+  title: string;
+  desc: string;
+}
+
+export interface Vehicle {
+  name: string;
+  capacity: string;
+  type: string;
+  image: string;
+  description: string;
+  icon: React.ElementType;
+  hideTires?: boolean;
+}
+
+export interface ServiceItem {
+  title: string;
+  subtitle: string;
+  heroImage: string;
+  heroVideo?: string;
+  description: string;
+  features: ServiceFeature[];
+  specs?: ServiceSpec[];
+  workflow?: WorkflowStep[];
+  vehicles?: Vehicle[];
+}
+
+export interface ServiceData {
+  [key: string]: ServiceItem;
+}
+
+export const serviceData: ServiceData = {
+  'mills': {
+    title: 'MILLS',
+    subtitle: 'The Science of High-Precision Milling',
+    heroImage: '/images/mills hero section.JPG',
+    description: 'Precision industrial milling at the heart of HI WOOD. We transform sustainably sourced raw logs into architecturally-perfect timber with millimeter accuracy and expert seasoning for lasting quality.',
+    features: [
+      { icon: Shield, title: 'Premium Sourcing', desc: 'Hand-picked Teak, Rosewood, and Mahogany from certified sources.' },
+      { icon: Settings, title: 'Precision Band Saws', desc: 'Vertical and horizontal cutting for perfect thickness and grain alignment.' },
+      { icon: Droplets, title: 'Advanced Seasoning', desc: 'Kiln-drying to 10-12% moisture to prevent future warping or cracking.' },
+      { icon: Clock, title: 'Decades of Expertise', desc: 'Master sawyers who understand the soul of every wood species.' }
+    ],
+    specs: [
+      { label: 'Log Capacity', value: '1000+ Tons / Month' },
+      { label: 'Precision Level', value: '+/- 0.5mm' },
+      { label: 'Wood Species', value: 'Teak, Rosewood, Mahogany, Oak' },
+      { label: 'Drying Method', value: 'Kiln-Dried (KD) & Air-Dried' }
+    ],
+    workflow: [
+      { step: "01", title: "LOG SELECTION", desc: "We hand-pick premium timber from government depots and certified sustainable forests, focusing on grain density and age." },
+      { step: "02", title: "PRECISION SAWING", desc: "Using advanced horizontal and vertical band saws, we process logs into boards with millimeter precision to minimize wastage." },
+      { step: "03", title: "KILN DRYING", desc: "Every board undergoes a scientific seasoning process in our kilns to achieve 10-12% moisture, ensuring lifetime stability." },
+      { step: "04", title: "QUALITY GRADING", desc: "Final inspection for grain beauty, structural strength, and surface finish before being dispatched to our clients." }
+    ]
+  },
+  'transportation': {
+    title: 'TRANSPORTATION',
+    subtitle: 'Logistics & Transportation',
+    heroImage: '/assets/transport.jpg',
+    heroVideo: '/assets/IMG_6053.MP4',
+    description: 'Specialized logistics for delicate timber and heavy beams. We ensure your materials arrive in pristine condition.',
+    features: [
+      { icon: Truck, title: 'Heavy Duty Fleet', desc: 'Specialized BharatBenz and Volvo carriers for massive log transportation.' },
+      { icon: Shield, title: 'Cargo Insurance', desc: 'Full transit protection for your high-value timber from forest to factory.' },
+      { icon: MapPin, title: 'Real-time Tracking', desc: 'Live GPS monitoring and route optimization for every shipment.' },
+      { icon: Clock, title: 'Express Delivery', desc: 'Reliable scheduling and timely arrivals for time-sensitive projects.' }
+    ],
+    workflow: [
+      { step: "01", title: "SITE ASSESSMENT", desc: "Our logistics team evaluates the forest or site terrain to select the optimal vehicle for loading." },
+      { step: "02", title: "SECURE LOADING", desc: "Using advanced loaders and crane trucks, logs are secured with industrial-grade multi-point fastening." },
+      { step: "03", title: "SAFE TRANSIT", desc: "Our experienced heavy-duty drivers navigate optimized routes while maintaining constant communication." },
+      { step: "04", title: "PRECISION UNLOADING", desc: "Safe delivery and organized unloading at your factory, sawmill, or construction site." }
+    ],
+    vehicles: [
+      {
+        name: 'BharatBenz Timber Carrier',
+        capacity: '35 Tons',
+        type: 'Heavy Duty',
+        image: '/assets/transport.jpg',
+        description: 'Primary carrier for large logs and heavy timber beams.',
+        icon: Truck
+      },
+      {
+        name: 'Logistics Express Truck',
+        capacity: '15 Tons',
+        type: 'Medium Duty',
+        image: '/images/service-1.jpg',
+        description: 'Perfect for regional delivery of processed wood and furniture.',
+        icon: Truck
+      },
+      {
+        name: 'JCB / Excavator Loader',
+        capacity: 'Heavy Duty',
+        type: 'Site Support',
+        image: '/images/service-2.jpg',
+        description: 'Versatile loader for log handling, site clearing, and heavy lifting.',
+        icon: Settings,
+        hideTires: true
+      },
+      {
+        name: 'Hitachi Wheeled Excavator',
+        capacity: 'Heavy Duty',
+        type: 'Earth Mover',
+        image: '/images/service-3.jpg',
+        description: 'Advanced wheeled excavator for rapid site mobility and heavy-duty timber handling.',
+        icon: Settings,
+        hideTires: true
+      },
+      {
+        name: 'Flatbed Trailer',
+        capacity: '50 Tons',
+        type: 'Industrial',
+        image: '/images/service-4.jpg',
+        description: 'Specialized for oversized timber loads and project logistics.',
+        icon: Truck
+      }
+    ]
+  },
+  'moisture-and-drying': {
+    title: 'MOISTURE AND DRYING',
+    subtitle: 'Perfect Balance',
+    heroImage: '/images/hero-service-1.jpg',
+    description: 'Controlled drying processes ensure the stability and quality of our timber, preventing warping and cracking.',
+    features: [
+      { icon: Droplets, title: 'Moisture Control', desc: 'Precision monitoring of water content.' },
+      { icon: Clock, title: 'Slow Curing', desc: 'Natural drying for better structural integrity.' }
+    ]
+  },
+  'project-logistics': {
+    title: 'PROJECT LOGISTICS',
+    subtitle: 'Seamless Planning',
+    heroImage: '/images/hero-service-2.jpg',
+    description: 'End-to-end management for your timber projects. From sourcing to on-site assembly, we handle it all.',
+    features: [
+      { icon: Settings, title: 'Coordination', desc: 'Expert team managing every detail.' },
+      { icon: Truck, title: 'On-site Prep', desc: 'Materials delivered ready for use.' }
+    ]
+  },
+  'quality-assurance': {
+    title: 'QUALITY ASSURANCE',
+    subtitle: 'Certified Excellence',
+    heroImage: '/images/hero-service-3.jpg',
+    description: 'Rigorous testing and inspection at every stage of production to guarantee the highest standards in the industry.',
+    features: [
+      { icon: CheckCircle, title: 'Inspection', desc: 'Multi-point checks on all materials.' },
+      { icon: Shield, title: 'Certification', desc: 'Meeting all international timber standards.' }
+    ]
+  }
+};
