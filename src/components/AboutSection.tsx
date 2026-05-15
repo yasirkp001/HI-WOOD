@@ -56,7 +56,7 @@ const AboutSection = () => {
                 className="absolute -bottom-10 -right-10 w-40 h-40 xl:w-48 xl:h-48 rounded-full bg-white border border-neutral-100 flex flex-col items-center justify-center text-neutral-900 shadow-[0_20px_50px_rgba(0,0,0,0.1)] z-20"
               >
                 <span className="text-5xl xl:text-6xl font-medium mb-1 text-accent">
-                  16
+                  30
                 </span>
                 <span className="text-[9px] xl:text-[10px] font-bold tracking-[0.15em] uppercase text-center leading-tight text-neutral-500">
                   Years of <br /> Experience
