@@ -32,8 +32,8 @@ export default function CustomFurnitureClient() {
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
             <Image 
-              src="/images/hero-bg.png" 
-              alt="Background" 
+              src="/images/custom-hero.jpg" 
+              alt="Bespoke wooden furniture with rattan panels" 
               fill 
               sizes="100vw"
               className="object-cover opacity-100"
@@ -108,6 +108,54 @@ export default function CustomFurnitureClient() {
                   </div>
                   <h3 className="text-sm font-black uppercase tracking-widest mb-4 group-hover:text-primary transition-colors">{f.title}</h3>
                   <p className="text-[11px] text-neutral-500 leading-relaxed font-medium group-hover:text-neutral-600 transition-colors">{f.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+        
+        {/* Wood Palette Section */}
+        <section className="py-32 bg-white">
+          <div className="container mx-auto px-8">
+            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
+              <div className="max-w-2xl">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-[1px] bg-primary"></div>
+                  <span className="text-[10px] font-black tracking-[0.3em] uppercase text-primary">The Foundation of Quality</span>
+                </div>
+                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 tracking-tighter uppercase leading-[0.9]">
+                  OUR WOOD <br /> <span className="text-neutral-400">PALETTE</span>
+                </h2>
+              </div>
+              <p className="text-neutral-500 text-[11px] max-w-xs leading-relaxed font-medium mb-2">
+                We source only the finest, sustainable hardwoods. Each species is selected for its unique grain, durability, and timeless character.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { name: "Nilambur Teak", desc: "The 'Queen of Timbers'. Renowned for its golden hue and unmatched longevity.", color: "bg-[#8B5A2B]" },
+                { name: "Indian Rosewood", desc: "Heavy, dense, and luxuriously dark. Perfect for statement heirloom pieces.", color: "bg-[#4A2C2A]" },
+                { name: "Red Mahogany", desc: "Features a fine, straight grain with a rich reddish-brown finish that deepens over time.", color: "bg-[#6B3E2E]" },
+                { name: "Golden Jackwood", desc: "A traditional Kerala favorite. Light, durable, and naturally termite-resistant.", color: "bg-[#D2B48C]" }
+              ].map((wood, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group relative overflow-hidden rounded-[32px] border border-black/5 aspect-[4/5]"
+                >
+                  <div className={`absolute inset-0 ${wood.color} transition-transform duration-700 group-hover:scale-110 opacity-100`}>
+                    {/* Texture overlay could go here */}
+                    <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 p-8 w-full">
+                    <h3 className="text-white text-lg font-bold uppercase tracking-tight mb-2">{wood.name}</h3>
+                    <p className="text-white/70 text-[10px] leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-300">{wood.desc}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
