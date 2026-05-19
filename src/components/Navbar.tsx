@@ -44,7 +44,7 @@ const Navbar = () => {
           <div className="w-[850px] bg-white rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-8 flex gap-6 border border-black/5 backdrop-blur-3xl">
             {[
               { title: 'Transportation', href: '/service/transportation', img: '/assets/transport.jpg' },
-              { title: 'Mills & Production', href: '/service/mills', img: '/images/hero-bg.png' },
+              { title: 'Mills & Production', href: '/service/mills', img: '/images/hero-bg-2.jpg' },
               { title: 'Custom Furniture', href: '/custom-furniture', img: '/assets/custom_furniture.png' }
             ].map((service) => (
               <Link 
@@ -57,7 +57,8 @@ const Navbar = () => {
                      src={service.img} 
                      alt={service.title} 
                      fill 
-                     sizes="300px"
+                     sizes="250px"
+                     quality={40}
                      className="object-cover transition-transform duration-[1.5s] ease-out group-hover/card:scale-110 opacity-70 group-hover/card:opacity-100" 
                    />
                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent" />

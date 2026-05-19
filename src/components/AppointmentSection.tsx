@@ -46,6 +46,8 @@ const AppointmentSection = () => {
         src="/images/appointment-bg.jpg"
         alt="Dark forest background for appointment section"
         fill
+        sizes="(max-width: 1024px) 100vw, 80vw"
+        quality={60}
         className="object-cover"
         priority={false}
       />
