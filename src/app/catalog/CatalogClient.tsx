@@ -193,11 +193,10 @@ function CatalogContent() {
                 {filteredItems.map((item, index) => (
                   <motion.div 
                     key={item.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 15 }}
+                    transition={{ duration: 0.35, delay: index * 0.04 }}
                     className="group"
                   >
                     <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-white border border-black/5 group-hover:border-primary/30 transition-all duration-500">
@@ -205,6 +204,7 @@ function CatalogContent() {
                         src={item.image} 
                         alt={item.name}
                         fill
+                        priority={index < 2}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         className="object-cover opacity-100 group-hover:scale-110 transition-all duration-700"
                       />
