@@ -50,6 +50,7 @@ export default function CustomFurnitureClient() {
               alt="Bespoke wooden furniture with rattan panels" 
               fill 
               sizes="100vw"
+              quality={70}
               className="object-cover opacity-100"
               priority
             />
@@ -283,6 +284,8 @@ export default function CustomFurnitureClient() {
                           src="/images/floor.jpg" 
                           alt="Finished wood panel preview" 
                           fill
+                          sizes="(max-width: 768px) 100vw, 30vw"
+                          quality={65}
                           className="object-cover"
                         />
                         {/* Blend overlay to apply the selected wood color hue */}
@@ -385,6 +388,7 @@ export default function CustomFurnitureClient() {
                     alt="Legacy & Innovation" 
                     fill 
                     sizes="(max-width: 1024px) 100vw, 50vw"
+                    quality={70}
                     className="object-cover opacity-100"
                   />
                   <div className="absolute inset-0 bg-black/10"></div>

@@ -109,13 +109,14 @@ const PopularFurniture = () => {
               className="group relative"
             >
               {/* Card Container */}
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-white border border-black/5 group-hover:border-primary/30 transition-all duration-500">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-white border border-black/5 group-hover:border-primary/30 transition-[border-color] duration-500">
                 <Image 
                   src={item.image} 
                   alt={item.name}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  className="object-cover opacity-100 group-hover:scale-110 transition-all duration-700"
+                  quality={65}
+                  className="object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
                 />
                 
                 {/* Category Badge */}
@@ -146,7 +147,7 @@ const PopularFurniture = () => {
                     </div>
                   </div>
 
-                  <div className="flex gap-3 pt-4 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200">
+                  <div className="flex gap-3 pt-4 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
                     <button 
                       onClick={() => document.getElementById('quote-form')?.scrollIntoView({ behavior: 'smooth' })}
                       className="flex-1 py-3 bg-white text-black text-[9px] font-black uppercase tracking-widest rounded-xl hover:bg-primary hover:text-white transition-colors"
