@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Play } from 'lucide-react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import VideoModal from './VideoModal';
 
 const VideoBannerSection = () => {
@@ -31,26 +32,55 @@ const VideoBannerSection = () => {
         {/* Interactive Content */}
         <div className="relative z-10 flex flex-col items-center transition-all duration-700 ease-out">
           
-          {/* Eyebrow Text */}
-          <div className="mb-6">
-            <p className="text-primary font-bold text-[10px] md:text-xs tracking-[0.4em] uppercase opacity-80 group-hover:opacity-100 transition-all duration-700">
-              Exclusive Factory Tour
-            </p>
-          </div>
 
-          {/* Advanced Play Button */}
-          <div className="relative mb-10 md:mb-12">
-            {/* Outer animated ring */}
-            <div className="absolute -inset-4 rounded-full border border-white/20 animate-[spin_4s_linear_infinite] group-hover:border-primary/50 transition-colors duration-500 hidden md:block"></div>
-            {/* Pulsing glow */}
-            <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl animate-pulse group-hover:bg-primary/40 transition-colors duration-500"></div>
-            
-            {/* Main Button */}
-            <div className="w-24 h-24 md:w-28 md:h-28 rounded-full border border-white/30 bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:border-primary/60 group-hover:bg-white/20 transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.1)] group-hover:shadow-[0_0_50px_rgba(34,197,94,0.3)]">
-              <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white flex items-center justify-center shadow-inner group-hover:scale-95 transition-transform duration-500">
-                <Play fill="black" size={28} className="text-black ml-1.5" />
-              </div>
-            </div>
+          {/* Advanced Cinematic Play Button */}
+          <div className="relative mb-10 md:mb-12 group/play">
+            {/* Ambient Background Aura */}
+            <div className="absolute inset-0 rounded-full bg-primary/20 blur-3xl opacity-60 group-hover/play:opacity-100 transition-opacity duration-1000"></div>
+
+            {/* Ring 3: Cinematic Outer Focus Ring (slow rotation) */}
+            <motion.div 
+              className="absolute -inset-10 rounded-full border border-dashed border-primary/30 pointer-events-none hidden md:block"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            />
+
+            {/* Ring 2: Expanding Pulsing Ring */}
+            <motion.div 
+              className="absolute -inset-6 rounded-full border border-primary/20 pointer-events-none"
+              animate={{ 
+                scale: [1, 1.12, 1],
+                opacity: [0.4, 0.8, 0.4]
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+            />
+
+            {/* Ring 1: Glassmorphic Middle Ring */}
+            <motion.div 
+              className="absolute -inset-2 rounded-full bg-black/25 border border-white/10 backdrop-blur-xs pointer-events-none group-hover/play:scale-105 transition-transform duration-500"
+            />
+
+            {/* Inner Core Play Button with Glassmorphism */}
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative w-24 h-24 md:w-28 md:h-28 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center transition-all duration-500 shadow-[0_0_40px_rgba(34,197,94,0.15)] group-hover/play:border-primary/50 group-hover/play:shadow-[0_0_60px_rgba(34,197,94,0.35)] cursor-pointer"
+            >
+              {/* White Inner Circle */}
+              <motion.div 
+                className="w-16 h-16 md:w-18 md:h-18 rounded-full bg-white flex items-center justify-center shadow-lg group-hover/play:bg-primary transition-colors duration-500"
+              >
+                <Play 
+                  fill="currentColor" 
+                  size={24} 
+                  className="text-black group-hover/play:text-white transition-colors duration-500 ml-1" 
+                />
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* Main Typography */}
