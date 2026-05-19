@@ -97,7 +97,7 @@ function CatalogContent() {
     setActiveCategory(initialCategory);
   }, [initialCategory]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [visibleCount, setVisibleCount] = useState(6);
   const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918086687342";
 
   const allFilteredItems = catalogItems.filter(item => {
@@ -111,7 +111,7 @@ function CatalogContent() {
   const hasMore = visibleCount < allFilteredItems.length;
 
   useEffect(() => {
-    setVisibleCount(8);
+    setVisibleCount(6);
   }, [activeCategory, searchQuery]);
 
   return (
@@ -199,14 +199,15 @@ function CatalogContent() {
                     transition={{ duration: 0.35, delay: index * 0.04 }}
                     className="group"
                   >
-                    <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-white border border-black/5 group-hover:border-primary/30 transition-all duration-500">
+                    <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] bg-white border border-black/5 group-hover:border-primary/30 transition-[border-color] duration-500">
                       <Image 
                         src={item.image} 
                         alt={item.name}
                         fill
                         priority={index < 2}
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        className="object-cover opacity-100 group-hover:scale-110 transition-all duration-700"
+                        quality={60}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover opacity-100 group-hover:scale-110 transition-transform duration-700"
                       />
                       
                       {/* Badges */}
@@ -215,7 +216,7 @@ function CatalogContent() {
                           {item.category}
                         </div>
                       </div>
-
+ 
                       {/* Content Overlay */}
                       <div className="absolute inset-x-0 bottom-0 p-8 translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
                         <div className="mb-4">
@@ -236,8 +237,8 @@ function CatalogContent() {
                             {item.description}
                           </p>
                         </div>
-
-                        <div className="flex gap-3 pt-4 border-t border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200">
+ 
+                        <div className="flex gap-3 pt-4 border-t border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
                           <a 
                             href={`https://wa.me/${phoneNumber}?text=Hi! I'm interested in customizing the ${item.name} from your catalog.`}
                             target="_blank"
