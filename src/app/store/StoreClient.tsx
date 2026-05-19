@@ -98,10 +98,10 @@ export default function StoreClient() {
                         <MapPin size={18} className="text-primary" />
                         <span className="text-[10px] font-bold uppercase tracking-widest">Address</span>
                       </div>
-                      <p className="text-sm text-white/70 font-medium">{branch.area}, Kerala</p>
+                      <p className="text-sm text-neutral-800 font-medium">{branch.area}, Kerala</p>
                     </div>
                     <div className="space-y-4">
-                      <div className="flex items-center gap-3 text-white/30">
+                      <div className="flex items-center gap-3 text-neutral-400">
                         <Phone size={18} className="text-primary" />
                         <span className="text-[10px] font-bold uppercase tracking-widest">Contact</span>
                       </div>

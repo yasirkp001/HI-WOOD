@@ -131,35 +131,5 @@ export const serviceData: ServiceData = {
         icon: Truck
       }
     ]
-  },
-  'moisture-and-drying': {
-    title: 'MOISTURE AND DRYING',
-    subtitle: 'Perfect Balance',
-    heroImage: '/images/hero-service-1.jpg',
-    description: 'Controlled drying processes ensure the stability and quality of our timber, preventing warping and cracking.',
-    features: [
-      { icon: Droplets, title: 'Moisture Control', desc: 'Precision monitoring of water content.' },
-      { icon: Clock, title: 'Slow Curing', desc: 'Natural drying for better structural integrity.' }
-    ]
-  },
-  'project-logistics': {
-    title: 'PROJECT LOGISTICS',
-    subtitle: 'Seamless Planning',
-    heroImage: '/images/hero-service-2.jpg',
-    description: 'End-to-end management for your timber projects. From sourcing to on-site assembly, we handle it all.',
-    features: [
-      { icon: Settings, title: 'Coordination', desc: 'Expert team managing every detail.' },
-      { icon: Truck, title: 'On-site Prep', desc: 'Materials delivered ready for use.' }
-    ]
-  },
-  'quality-assurance': {
-    title: 'QUALITY ASSURANCE',
-    subtitle: 'Certified Excellence',
-    heroImage: '/images/hero-service-3.jpg',
-    description: 'Rigorous testing and inspection at every stage of production to guarantee the highest standards in the industry.',
-    features: [
-      { icon: CheckCircle, title: 'Inspection', desc: 'Multi-point checks on all materials.' },
-      { icon: Shield, title: 'Certification', desc: 'Meeting all international timber standards.' }
-    ]
   }
 };

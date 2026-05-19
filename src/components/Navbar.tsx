@@ -103,27 +103,18 @@ const Navbar = () => {
         return (
           <div className="w-[450px] bg-white rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-10 flex flex-col gap-8 border border-black/5 backdrop-blur-3xl">
             {[
-              { name: 'Palazhi HQ', desc: 'Main Sawmill & Experience Center', status: 'Active' },
-              { name: 'Kozhikode City', desc: 'Premium Furniture Gallery', status: 'Coming Soon' },
-              { name: 'Malappuram', desc: 'Regional Distribution Hub', status: 'Coming Soon' }
+              { name: 'Palazhi HQ', desc: 'Main Sawmill & Experience Center', status: 'Active' }
             ].map((branch) => (
               <div key={branch.name} className="group/branch flex flex-col gap-1 relative">
                 <div className="flex items-center gap-3">
                   <span className="text-[11px] font-black uppercase tracking-widest text-neutral-900">
                     {branch.name}
                   </span>
-                  {branch.status === 'Coming Soon' && (
-                    <span className="text-[7px] font-black uppercase tracking-widest bg-primary/20 text-primary px-2 py-0.5 rounded-full border border-primary/20">
-                      Coming Soon
-                    </span>
-                  )}
                 </div>
                 <span className="text-[9px] font-bold text-neutral-400 uppercase tracking-[0.2em]">
                   {branch.desc}
                 </span>
-                {branch.status === 'Active' ? (
-                  <Link href="/store" className="absolute inset-0 z-10" />
-                ) : null}
+                <Link href="/store" className="absolute inset-0 z-10" />
               </div>
             ))}
           </div>
