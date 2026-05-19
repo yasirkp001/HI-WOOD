@@ -16,7 +16,7 @@ const VideoBannerSection = () => {
         onClick={() => setIsVideoModalOpen(true)}
       >
         <Image 
-          src="/images/video-banner-bg.jpg" 
+          src="/images/hero-bg-2.jpg" 
           alt="Video banner background"
           fill
           sizes="100vw"

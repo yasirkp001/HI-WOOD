@@ -78,148 +78,15 @@ const catalogItems = [
     id: 8,
     name: "Oak Finish Dressing Table",
     description: "Modern vanity with a large mirror and multiple storage compartments.",
-    image: "/images/furniture-7.jpg",
+    image: "/images/dressing-table.jpg",
     rating: 4,
     category: "Bedroom",
     price: "Custom"
   },
 
-  // SEATING
-  {
-    id: 9,
-    name: "Lattice Back Accent Chair",
-    description: "Elegant occasional chair featuring intricate woodwork on the backrest.",
-    image: "/images/furniture-4.jpg",
-    rating: 5,
-    category: "Seating",
-    price: "Custom"
-  },
-  {
-    id: 10,
-    name: "Mid-Century Teak Easy Chair",
-    description: "Iconic mid-century design with comfortable leather upholstery.",
-    image: "/images/furniture-1.jpg",
-    rating: 5,
-    category: "Seating",
-    price: "Custom"
-  },
-  {
-    id: 11,
-    name: "Plush Wood-Frame Sofa",
-    description: "Luxury 3-seater sofa with a visible solid wood structural frame.",
-    image: "/images/furniture-8.jpg",
-    rating: 5,
-    category: "Seating",
-    price: "Custom"
-  },
-
-  // OFFICE
-  {
-    id: 12,
-    name: "Modern Executive Desk",
-    description: "Spacious mahogany workspace with clean lines and hidden cable management.",
-    image: "/images/furniture-5.jpg",
-    rating: 5,
-    category: "Office",
-    price: "Custom"
-  },
-  {
-    id: 13,
-    name: "Floating Walnut Wall Desk",
-    description: "Space-saving minimalist desk that mounts directly to your wall.",
-    image: "/images/furniture-7.jpg",
-    rating: 4,
-    category: "Office",
-    price: "Custom"
-  },
-  {
-    id: 14,
-    name: "Solid Oak Filing Cabinet",
-    description: "Durable and secure storage for your important professional documents.",
-    image: "/images/furniture-6.jpg",
-    rating: 5,
-    category: "Office",
-    price: "Custom"
-  },
-
-  // LIVING
-  {
-    id: 15,
-    name: "Scandinavian Sideboard",
-    description: "Minimalist oak storage solution with smooth sliding doors.",
-    image: "/images/furniture-6.jpg",
-    rating: 5,
-    category: "Living",
-    price: "Custom"
-  },
-  {
-    id: 16,
-    name: "Heritage Rosewood Sofa",
-    description: "Traditional Kerala style rosewood sofa with intricate hand carvings.",
-    image: "/images/furniture-8.jpg",
-    rating: 5,
-    category: "Living",
-    price: "Custom"
-  },
-  {
-    id: 17,
-    name: "Nesting Teak Coffee Tables",
-    description: "Set of 3 versatile tables that stack together to save space.",
-    image: "/images/furniture-1.jpg",
-    rating: 5,
-    category: "Living",
-    price: "Custom"
-  },
-  {
-    id: 18,
-    name: "Geometric TV Console",
-    description: "Modern media unit with unique geometric wood patterns.",
-    image: "/images/furniture-3.jpg",
-    rating: 5,
-    category: "Living",
-    price: "Custom"
-  },
-
-  // STORAGE
-  {
-    id: 19,
-    name: "Floating Walnut Shelf",
-    description: "Sleek wall-mounted display shelf made from premium walnut timber.",
-    image: "/images/furniture-7.jpg",
-    rating: 4,
-    category: "Storage",
-    price: "Custom"
-  },
-  {
-    id: 20,
-    name: "Geometric Teak Bookcase",
-    description: "Contemporary bookcase with irregular shelving for a modern aesthetic.",
-    image: "/images/furniture-1.jpg",
-    rating: 5,
-    category: "Storage",
-    price: "Custom"
-  },
-  {
-    id: 21,
-    name: "Large Oak Shoe Rack",
-    description: "Ventilated wooden storage for up to 24 pairs of shoes.",
-    image: "/images/furniture-4.jpg",
-    rating: 5,
-    category: "Storage",
-    price: "Custom"
-  },
-  {
-    id: 22,
-    name: "Custom Pantry Unit",
-    description: "Floor-to-ceiling kitchen storage built from seasoned hardwood.",
-    image: "/images/furniture-5.jpg",
-    rating: 5,
-    category: "Storage",
-    price: "Custom"
-  }
 ];
 
-const categories = ["All", "Dining", "Bedroom", "Seating", "Office", "Living", "Storage"];
+const categories = ["All", "Dining", "Bedroom"];
 
 function CatalogContent() {
   const searchParams = useSearchParams();

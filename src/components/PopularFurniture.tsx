@@ -46,12 +46,12 @@ const furnitureItems = [
     category: "Living"
   },
   {
-    id: 7,
-    name: "Floating Walnut Shelf",
-    description: "Sleek wall-mounted display shelf made from premium walnut timber.",
-    image: "/images/furniture-7.jpg",
+    id: 8,
+    name: "Oak Finish Dressing Table",
+    description: "Modern vanity with a large mirror and multiple storage compartments.",
+    image: "/images/dressing-table.jpg",
     rating: 4,
-    category: "Storage"
+    category: "Bedroom"
   }
 ];
 
