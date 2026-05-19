@@ -31,6 +31,7 @@ const HeroSection = () => {
           fill
           priority
           sizes="100vw"
+          quality={70}
           className="object-cover"
         />
         {/* Subtle dark overlay for text readability */}

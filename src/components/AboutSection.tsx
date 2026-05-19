@@ -45,7 +45,9 @@ const AboutSection = () => {
                 alt="Natural forest - the source of HI WOOD timber"
                 width={800}
                 height={1200}
-                className="relative w-full h-full object-cover rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-700 group-hover:scale-[1.02]"
+                sizes="(max-width: 768px) 100vw, 45vw"
+                quality={70}
+                className="relative w-full h-full object-cover rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform duration-700 group-hover:scale-[1.02]"
               />
               {/* Floating Badge */}
               <MotionDiv
@@ -115,7 +117,9 @@ const AboutSection = () => {
                     alt={img.alt}
                     width={600}
                     height={450}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    quality={70}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </MotionDiv>

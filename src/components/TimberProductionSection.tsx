@@ -53,6 +53,7 @@ const TimberProductionSection = () => {
                 alt={card.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 33vw"
+                quality={70}
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
