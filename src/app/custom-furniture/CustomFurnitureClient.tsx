@@ -17,6 +17,20 @@ const PopularFurniture = dynamic(() => import('@/components/PopularFurniture'), 
 export default function CustomFurnitureClient() {
   const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918086687342";
 
+  const woodPaletteData = [
+    { name: "Nilambur Teak", desc: "The 'Queen of Timbers'. Renowned for its golden hue and unmatched longevity.", color: "bg-[#8B5A2B]", pricePerSqFt: 3500 },
+    { name: "Indian Rosewood", desc: "Heavy, dense, and luxuriously dark. Perfect for statement heirloom pieces.", color: "bg-[#4A2C2A]", pricePerSqFt: 4800 },
+    { name: "Red Mahogany", desc: "Features a fine, straight grain with a rich reddish-brown finish that deepens over time.", color: "bg-[#6B3E2E]", pricePerSqFt: 2200 },
+    { name: "Golden Jackwood", desc: "A traditional Kerala favorite. Light, durable, and naturally termite-resistant.", color: "bg-[#D2B48C]", pricePerSqFt: 1600 }
+  ];
+
+  const [selectedWood, setSelectedWood] = React.useState(woodPaletteData[0]);
+  const [length, setLength] = React.useState<number>(6);
+  const [width, setWidth] = React.useState<number>(3);
+
+  const sqFt = length * width;
+  const estimatedCost = sqFt * selectedWood.pricePerSqFt;
+
   const features = [
     { icon: Hammer, title: "Master Craftsmanship", desc: "Expert artisans with decades of experience in traditional and modern woodworking." },
     { icon: Palette, title: "Premium Materials", desc: "Selection of the finest Teak, Rosewood, and Mahogany from sustainable sources." },
@@ -28,7 +42,7 @@ export default function CustomFurnitureClient() {
     <div className="min-h-screen bg-white text-neutral-900 font-sans overflow-x-hidden selection:bg-primary/30">
       <main>
         {/* Hero Section */}
-        <section className="relative py-32 md:py-48 overflow-hidden border-b border-black/5">
+        <section className="relative min-h-screen flex items-center py-32 md:py-48 overflow-hidden border-b border-black/5">
           {/* Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
             <Image 
@@ -72,7 +86,7 @@ export default function CustomFurnitureClient() {
               >
                 <button 
                   onClick={() => document.getElementById('quote-form')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-10 py-5 bg-neutral-900 text-white text-[11px] font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all shadow-2xl rounded-full"
+                  className="px-10 py-5 bg-[#25D366] text-white text-[11px] font-black uppercase tracking-widest hover:bg-[#20ba5a] transition-all shadow-2xl rounded-full"
                 >
                   Request A Quote
                 </button>
@@ -80,9 +94,9 @@ export default function CustomFurnitureClient() {
                   href={`https://wa.me/${phoneNumber}?text=Hi Hi Wood! I want to discuss a custom furniture design.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-10 py-5 border border-black/10 hover:bg-black/5 text-[11px] font-black uppercase tracking-widest transition-all flex items-center gap-3 rounded-full"
+                  className="px-10 py-5 bg-[#25D366] text-white text-[11px] font-black uppercase tracking-widest hover:bg-[#20ba5a] transition-all flex items-center gap-3 rounded-full shadow-2xl"
                 >
-                  <MessageSquare size={16} className="text-[#25D366]" />
+                  <MessageSquare size={16} className="text-white" />
                   Chat on WhatsApp
                 </a>
               </motion.div>
@@ -128,37 +142,195 @@ export default function CustomFurnitureClient() {
                 </h2>
               </div>
               <p className="text-neutral-500 text-[11px] max-w-xs leading-relaxed font-medium mb-2">
-                We source only the finest, sustainable hardwoods. Each species is selected for its unique grain, durability, and timeless character.
+                We source only the finest, sustainable hardwoods. Select a species to plan and book your bespoke timber size.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[
-                { name: "Nilambur Teak", desc: "The 'Queen of Timbers'. Renowned for its golden hue and unmatched longevity.", color: "bg-[#8B5A2B]" },
-                { name: "Indian Rosewood", desc: "Heavy, dense, and luxuriously dark. Perfect for statement heirloom pieces.", color: "bg-[#4A2C2A]" },
-                { name: "Red Mahogany", desc: "Features a fine, straight grain with a rich reddish-brown finish that deepens over time.", color: "bg-[#6B3E2E]" },
-                { name: "Golden Jackwood", desc: "A traditional Kerala favorite. Light, durable, and naturally termite-resistant.", color: "bg-[#D2B48C]" }
-              ].map((wood, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group relative overflow-hidden rounded-[32px] border border-black/5 aspect-[4/5]"
-                >
-                  <div className={`absolute inset-0 ${wood.color} transition-transform duration-700 group-hover:scale-110 opacity-100`}>
-                    {/* Texture overlay could go here */}
-                    <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 p-8 w-full">
-                    <h3 className="text-white text-lg font-bold uppercase tracking-tight mb-2">{wood.name}</h3>
-                    <p className="text-white/70 text-[10px] leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-300">{wood.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {woodPaletteData.map((wood, i) => {
+                const isSelected = selectedWood.name === wood.name;
+                return (
+                  <motion.div 
+                    key={i}
+                    onClick={() => setSelectedWood(wood)}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className={`group relative overflow-hidden rounded-[32px] border aspect-[4/5] cursor-pointer transition-all duration-300 ${
+                      isSelected ? 'border-primary shadow-xl ring-2 ring-primary/20 scale-[1.02]' : 'border-black/5 hover:border-primary/50'
+                    }`}
+                  >
+                    <div className={`absolute inset-0 ${wood.color} transition-transform duration-700 group-hover:scale-110 opacity-100`}>
+                      {/* Texture overlay */}
+                      <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    
+                    {/* Active checkmark badge */}
+                    {isSelected && (
+                      <div className="absolute top-6 right-6 bg-primary text-white p-2 rounded-full shadow-lg z-20 flex items-center justify-center">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                    )}
+
+                    <div className="absolute bottom-0 left-0 p-8 w-full z-10">
+                      <div className="text-[10px] text-white/60 font-black tracking-widest uppercase mb-1">
+                        ₹{wood.pricePerSqFt.toLocaleString('en-IN')} / Sq.Ft
+                      </div>
+                      <h3 className="text-white text-lg font-bold uppercase tracking-tight mb-2">{wood.name}</h3>
+                      <p className="text-white/70 text-[10px] leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-300">{wood.desc}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
+
+            {/* Interactive Calculator Panel */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-neutral-50 border border-black/5 rounded-[40px] p-8 md:p-12 shadow-2xl"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                {/* Inputs */}
+                <div className="lg:col-span-7 space-y-8">
+                  <div>
+                    <span className="text-[10px] font-black tracking-[0.3em] uppercase text-primary mb-2 block">Interactive Planner</span>
+                    <h3 className="text-2xl md:text-3xl font-black text-neutral-900 uppercase tracking-tight">
+                      Calculate Your Timber & Size
+                    </h3>
+                    <p className="text-neutral-500 text-xs mt-2">
+                      Adjust the length and width sliders below to define your bespoke furniture panel. See real-time size and estimated cost instantly.
+                    </p>
+                  </div>
+
+                  {/* Length Slider */}
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <label className="text-[11px] font-black uppercase tracking-widest text-neutral-700">
+                        Length: <span className="text-primary font-bold text-sm ml-1">{length} Feet</span>
+                      </label>
+                      <span className="text-[10px] text-neutral-400 font-medium">Min 1 ft - Max 20 ft</span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <input 
+                        type="range" 
+                        min="1" 
+                        max="20" 
+                        step="0.5"
+                        value={length} 
+                        onChange={(e) => setLength(parseFloat(e.target.value))}
+                        className="w-full accent-primary h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer"
+                      />
+                      <input 
+                        type="number" 
+                        min="1" 
+                        max="20" 
+                        value={length}
+                        onChange={(e) => setLength(Math.max(1, Math.min(20, parseFloat(e.target.value) || 1)))}
+                        className="w-20 bg-white border border-black/5 rounded-xl px-3 py-2 text-center text-xs font-bold outline-none text-neutral-900 focus:border-primary/50"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Width Slider */}
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <label className="text-[11px] font-black uppercase tracking-widest text-neutral-700">
+                        Width: <span className="text-primary font-bold text-sm ml-1">{width} Feet</span>
+                      </label>
+                      <span className="text-[10px] text-neutral-400 font-medium">Min 1 ft - Max 10 ft</span>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <input 
+                        type="range" 
+                        min="1" 
+                        max="10" 
+                        step="0.5"
+                        value={width} 
+                        onChange={(e) => setWidth(parseFloat(e.target.value))}
+                        className="w-full accent-primary h-2 bg-neutral-200 rounded-lg appearance-none cursor-pointer"
+                      />
+                      <input 
+                        type="number" 
+                        min="1" 
+                        max="10" 
+                        value={width}
+                        onChange={(e) => setWidth(Math.max(1, Math.min(10, parseFloat(e.target.value) || 1)))}
+                        className="w-20 bg-white border border-black/5 rounded-xl px-3 py-2 text-center text-xs font-bold outline-none text-neutral-900 focus:border-primary/50"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Summary / Booking Card */}
+                <div className="lg:col-span-5 bg-white border border-black/5 rounded-[32px] p-8 shadow-xl flex flex-col justify-between h-full min-h-[300px]">
+                  <div className="space-y-6">
+                    <div className="border-b border-black/5 pb-4">
+                      <span className="text-[9px] font-black uppercase tracking-widest text-neutral-400">Selected Selection</span>
+                      <div className="flex items-center gap-3 mt-2">
+                        <span className={`w-3.5 h-3.5 rounded-full ${selectedWood.color} border border-white shadow-sm`}></span>
+                        <span className="text-md font-black text-neutral-900 uppercase tracking-tight">{selectedWood.name}</span>
+                      </div>
+                      
+                      {/* Interactive texture preview using floor.jpg */}
+                      <div className="relative h-28 rounded-2xl overflow-hidden border border-black/5 mt-4">
+                        <Image 
+                          src="/images/floor.jpg" 
+                          alt="Finished wood panel preview" 
+                          fill
+                          className="object-cover"
+                        />
+                        {/* Blend overlay to apply the selected wood color hue */}
+                        <div className={`absolute inset-0 ${selectedWood.color} mix-blend-multiply opacity-80`}></div>
+                        <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
+                        <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest text-neutral-900 shadow-sm">
+                          Material Preview
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      <div className="flex justify-between text-xs">
+                        <span className="text-neutral-500 font-medium">Dimensions</span>
+                        <span className="text-neutral-900 font-bold">{length} ft × {width} ft</span>
+                      </div>
+                      <div className="flex justify-between text-xs">
+                        <span className="text-neutral-500 font-medium">Total Area</span>
+                        <span className="text-neutral-900 font-black">{sqFt.toFixed(1)} Sq.Ft</span>
+                      </div>
+                      <div className="flex justify-between text-xs">
+                        <span className="text-neutral-500 font-medium">Rate / Sq.Ft</span>
+                        <span className="text-primary font-bold">₹{selectedWood.pricePerSqFt.toLocaleString('en-IN')}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 border-t border-black/5 mt-6 space-y-6">
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs font-black uppercase tracking-widest text-neutral-400">Estimated Cost</span>
+                      <span className="text-2xl font-black text-neutral-900">₹{estimatedCost.toLocaleString('en-IN')}</span>
+                    </div>
+
+                    <button 
+                      type="button"
+                      onClick={() => {
+                        const wpMsg = `Hi HI WOOD! I would like to book a custom wood palette square feet size.\n\nSelected Wood: ${selectedWood.name}\nDimensions: ${length} ft x ${width} ft\nTotal Area: ${sqFt.toFixed(1)} Sq.Ft\nRate per Sq.Ft: ₹${selectedWood.pricePerSqFt}\nEstimated Timber Cost: ₹${estimatedCost.toLocaleString('en-IN')}\n\nPlease contact me to finalize the custom furniture placement!`;
+                        window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(wpMsg)}`, '_blank');
+                      }}
+                      className="w-full bg-primary hover:bg-primary/95 text-white py-4 rounded-2xl font-black uppercase text-[10px] tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3"
+                    >
+                      <MessageSquare size={16} className="text-white" />
+                      Book Wood Palette Now
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
