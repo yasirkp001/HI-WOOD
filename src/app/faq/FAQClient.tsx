@@ -70,7 +70,7 @@ type FAQItemProps = {
   onClick: () => void;
 };
 
-const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) =>
+const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
   return (
     <div className="border-b border-black/5 last:border-0">
       <button 
