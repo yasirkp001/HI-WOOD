@@ -63,7 +63,14 @@ const faqData = [
   }
 ];
 
-const FAQItem = ({ question, answer, isOpen, onClick }: any) => {
+type FAQItemProps = {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onClick: () => void;
+};
+
+const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) =>
   return (
     <div className="border-b border-black/5 last:border-0">
       <button 

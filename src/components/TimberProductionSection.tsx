@@ -14,7 +14,7 @@ const TimberProductionSection = () => {
     {
       id: 2,
       title: " MILLS",
-      image: "/images/timber-production.jpg",
+      image: "/images/timber-sawmill.png",
       link: "/service/mills"
     },
     {

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, ArrowRight, Star, Search, Filter, X } from 'lucide-react';
+import { MessageSquare, ArrowRight, Star, Search, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -93,9 +93,6 @@ function CatalogContent() {
   const initialCategory = searchParams.get('category') || "All";
   const [activeCategory, setActiveCategory] = useState(initialCategory);
 
-  useEffect(() => {
-    setActiveCategory(initialCategory);
-  }, [initialCategory]);
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(6);
   const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918086687342";
@@ -149,7 +146,7 @@ function CatalogContent() {
               {categories.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => { setActiveCategory(cat); setVisibleCount(6); }}
                   className={`px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${
                     activeCategory === cat 
                       ? 'bg-primary text-white shadow-lg shadow-primary/20' 
