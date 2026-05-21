@@ -72,7 +72,6 @@ const Footer = () => {
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex gap-6">
-              <a href="#" className="text-neutral-400 hover:text-primary transition-colors" aria-label="Facebook">{socialIcons.facebook}</a>
               <a href="#" className="text-neutral-400 hover:text-primary transition-colors" aria-label="YouTube">{socialIcons.youtube}</a>
               <a href="https://www.instagram.com/hiwood_palazhi/?hl=en" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-primary transition-colors" aria-label="Instagram">{socialIcons.instagram}</a>
             </motion.div>
