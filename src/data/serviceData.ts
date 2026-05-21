@@ -50,7 +50,7 @@ export const serviceData: ServiceData = {
   'mills': {
     title: 'MILLS',
     subtitle: 'The Science of High-Precision Milling',
-    heroImage: '/images/premium_sawmill_hero_optimized.jpg',
+    heroImage: '/images/mills hero section.JPG',
     heroImagePosition: 'object-center',
     detailImagePosition: 'object-center',
     description: 'Precision industrial milling at the heart of HI WOOD. We transform sustainably sourced raw logs into architecturally-perfect timber with millimeter accuracy and expert seasoning for lasting quality.',
