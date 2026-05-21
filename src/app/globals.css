@@ -1,21 +1,19 @@
 @import "tailwindcss";
 
 /* Design tokens */
-@layer theme {
-  :root {
-    --color-cream: #FAF7EB;
-    --color-sand: #00A651;
-    --color-peach: #EB975E;
-    --color-terracotta: #E31E24;
-    --color-rust: #AB4F41;
-    --color-maroon: #5D1F1E;
+@theme {
+  --color-cream: #FAF7EB;
+  --color-sand: #00A651;
+  --color-peach: #EB975E;
+  --color-terracotta: #E31E24;
+  --color-rust: #AB4F41;
+  --color-maroon: #5D1F1E;
 
-    --color-primary: #00A651;
-    --color-accent: #E31E24;
+  --color-primary: #00A651;
+  --color-accent: #E31E24;
 
-    --font-sans: var(--font-manrope), ui-sans-serif, system-ui;
-    --font-serif: var(--font-montserrat), ui-serif, Georgia;
-  }
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui;
+  --font-serif: var(--font-montserrat), ui-serif, Georgia;
 }
 
 /* Tailwind base layer with dark mode variables */
