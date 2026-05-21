@@ -147,7 +147,7 @@ export default function CustomFurnitureClient() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-16">
               {woodPaletteData.map((wood, i) => {
                 const isSelected = selectedWood.name === wood.name;
                 return (
@@ -158,7 +158,7 @@ export default function CustomFurnitureClient() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className={`group relative overflow-hidden rounded-[32px] border aspect-[4/5] cursor-pointer transition-all duration-300 ${
+                    className={`group relative overflow-hidden rounded-[32px] border aspect-square cursor-pointer transition-all duration-300 ${
                       isSelected ? 'border-primary shadow-xl ring-2 ring-primary/20 scale-[1.02]' : 'border-black/5 hover:border-primary/50'
                     }`}
                   >
@@ -177,12 +177,12 @@ export default function CustomFurnitureClient() {
                       </div>
                     )}
 
-                    <div className="absolute bottom-0 left-0 p-8 w-full z-10">
-                      <div className="text-[10px] text-white/60 font-black tracking-widest uppercase mb-1">
+                    <div className="absolute bottom-0 left-0 p-4 md:p-6 w-full z-10">
+                      <div className="text-[8px] md:text-[10px] text-white/60 font-black tracking-widest uppercase mb-1">
                         ₹{wood.pricePerSqFt.toLocaleString('en-IN')} / Sq.Ft
                       </div>
-                      <h3 className="text-white text-lg font-bold uppercase tracking-tight mb-2">{wood.name}</h3>
-                      <p className="text-white/70 text-[10px] leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-300">{wood.desc}</p>
+                      <h3 className="text-white text-sm md:text-lg font-bold uppercase tracking-tight mb-1 md:mb-2">{wood.name}</h3>
+                      <p className="text-white/70 text-[9px] md:text-[10px] leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-300">{wood.desc}</p>
                     </div>
                   </motion.div>
                 );
