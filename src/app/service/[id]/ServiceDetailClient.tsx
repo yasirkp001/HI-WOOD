@@ -90,7 +90,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
               alt={service.title} 
               fill
               sizes="100vw"
-              className="w-full h-full object-cover opacity-90"
+              className={`w-full h-full object-cover opacity-90 ${service.heroImagePosition || 'object-center'}`}
               priority
             />
           )}
@@ -195,7 +195,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                   alt={service.title} 
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
+                  className={`w-full h-full object-cover transition-transform duration-700 hover:scale-105 ${service.detailImagePosition || service.heroImagePosition || 'object-center'}`} 
                 />
                 <div className="absolute inset-0 bg-black/10"></div>
                 

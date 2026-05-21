@@ -32,6 +32,8 @@ export interface ServiceItem {
   title: string;
   subtitle: string;
   heroImage: string;
+  heroImagePosition?: string;
+  detailImagePosition?: string;
   heroVideo?: string;
   description: string;
   features: ServiceFeature[];
@@ -48,7 +50,9 @@ export const serviceData: ServiceData = {
   'mills': {
     title: 'MILLS',
     subtitle: 'The Science of High-Precision Milling',
-    heroImage: '/images/mills hero section.JPG',
+    heroImage: '/images/premium_sawmill_hero_optimized.jpg',
+    heroImagePosition: 'object-center',
+    detailImagePosition: 'object-center',
     description: 'Precision industrial milling at the heart of HI WOOD. We transform sustainably sourced raw logs into architecturally-perfect timber with millimeter accuracy and expert seasoning for lasting quality.',
     features: [
       { icon: Shield, title: 'Premium Sourcing', desc: 'Hand-picked Teak, Rosewood, and Mahogany from certified sources.' },
