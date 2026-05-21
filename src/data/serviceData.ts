@@ -99,40 +99,6 @@ export const serviceData: ServiceData = {
         image: '/assets/transport.jpg',
         description: 'Primary carrier for large logs and heavy timber beams.',
         icon: Truck
-      },
-      {
-        name: 'Logistics Express Truck',
-        capacity: '15 Tons',
-        type: 'Medium Duty',
-        image: '/images/service-1.jpg',
-        description: 'Perfect for regional delivery of processed wood and furniture.',
-        icon: Truck
-      },
-      {
-        name: 'JCB / Excavator Loader',
-        capacity: 'Heavy Duty',
-        type: 'Site Support',
-        image: '/images/service-2.jpg',
-        description: 'Versatile loader for log handling, site clearing, and heavy lifting.',
-        icon: Settings,
-        hideTires: true
-      },
-      {
-        name: 'Hitachi Wheeled Excavator',
-        capacity: 'Heavy Duty',
-        type: 'Earth Mover',
-        image: '/images/service-3.jpg',
-        description: 'Advanced wheeled excavator for rapid site mobility and heavy-duty timber handling.',
-        icon: Settings,
-        hideTires: true
-      },
-      {
-        name: 'Flatbed Trailer',
-        capacity: '50 Tons',
-        type: 'Industrial',
-        image: '/images/service-4.jpg',
-        description: 'Specialized for oversized timber loads and project logistics.',
-        icon: Truck
       }
     ]
   }
