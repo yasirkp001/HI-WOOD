@@ -28,7 +28,7 @@ const branches: Branch[] = [
 
 export default function StoreClient() {
   return (
-    <main className="min-h-screen bg-white font-sans overflow-x-hidden">
+    <main className="min-h-screen bg-gradient-to-br from-primary/5 via-white to-primary/5 font-sans overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative pt-24 pb-32 bg-white text-neutral-900 overflow-hidden">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/10 -skew-x-12 translate-x-1/3"></div>
@@ -66,24 +66,12 @@ export default function StoreClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: idx * 0.1 }}
-                className={`flex flex-col ${idx % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16 lg:gap-24`}
+                className="flex flex-col items-center gap-16 lg:gap-24"
               >
-                {/* Branch Image */}
-                <div className="w-full lg:w-1/2 relative">
-                  <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/5 relative">
-                    <Image 
-                      src={branch.image} 
-                      alt={branch.city}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-1000"
-                    />
-                  </div>
-                  <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10"></div>
-                </div>
+
 
                 {/* Branch Details */}
-                <div className="w-full lg:w-1/2 space-y-10">
+                <div className="w-full lg:w-1/2 space-y-10 bg-white/20 backdrop-blur-xl rounded-[2rem] border border-white/30 p-8 md:p-12 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
                   <div>
                     <h3 className="text-[10px] font-bold tracking-[0.4em] uppercase text-primary mb-4">Experience Center</h3>
                     <h2 className="text-5xl md:text-6xl font-bold text-neutral-900 mb-6 tracking-tighter">{branch.city}</h2>
@@ -114,9 +102,8 @@ export default function StoreClient() {
                       href={branch.mapUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-primary transition-all duration-300 shadow-xl"
-                    >
-                      View on Map <Globe size={14} />
+                      className="inline-flex items-center gap-3 px-8 py-4 bg-neutral-900 text-white rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-primary transition-all duration-300 shadow-xl">
+                       View on Map <Globe size={14} />
                     </a>
                     <button 
                       onClick={() => window.open(`https://wa.me/${branch.phone.replace(/[^0-9]/g, '')}?text=Hi Hi Wood ${branch.city}! I would like to visit your branch.`, '_blank')}
@@ -126,6 +113,7 @@ export default function StoreClient() {
                     </button>
                   </div>
                 </div>
+
               </motion.div>
             ))}
           </div>

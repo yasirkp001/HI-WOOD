@@ -46,16 +46,16 @@ const Footer = () => {
     <footer className="relative bg-white text-neutral-900 pt-24 pb-12 px-6 md:px-12 overflow-hidden font-sans border-t border-black/5">
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/5 to-transparent"></div>
-      
+
       <div className="max-w-[1400px] mx-auto relative z-10">
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-16 lg:gap-12 mb-20"
         >
-          
+
           {/* Brand & Identity */}
           <div className="lg:col-span-5 space-y-8">
             <motion.div variants={itemVariants} className="space-y-6">
@@ -65,14 +65,14 @@ const Footer = () => {
 
 
 
-              
+
               <p className="text-neutral-500 text-sm leading-relaxed max-w-md font-light">
                 Crafting nature&apos;s finest resources into architectural masterpieces. We set the standard in premium timber milling and artisanal woodwork since 1998.
               </p>
             </motion.div>
 
             <motion.div variants={itemVariants} className="flex gap-6">
-              <a href="#" className="text-neutral-400 hover:text-primary transition-colors" aria-label="YouTube">{socialIcons.youtube}</a>
+              <a href="https://www.youtube.com/channel/UCybpQJ_3GrpjGuXnGgW6dXw" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-primary transition-colors" aria-label="YouTube">{socialIcons.youtube}</a>
               <a href="https://www.instagram.com/hiwood_palazhi/?hl=en" target="_blank" rel="noopener noreferrer" className="text-neutral-400 hover:text-primary transition-colors" aria-label="Instagram">{socialIcons.instagram}</a>
             </motion.div>
           </div>
@@ -120,7 +120,7 @@ const Footer = () => {
         </motion.div>
 
         {/* Bottom Bar */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
