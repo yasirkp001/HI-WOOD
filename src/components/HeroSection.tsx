@@ -30,6 +30,7 @@ const HeroSection = () => {
           alt="Premium timber background"
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
           quality={70}
           className="object-cover"

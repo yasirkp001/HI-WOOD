@@ -18,6 +18,7 @@ const Logo = ({ className = "h-12", variant = 'simple', textColor = "text-black 
           height={48}
           className="h-full w-auto object-contain"
           priority
+          fetchPriority="high"
         />
       </div>
 

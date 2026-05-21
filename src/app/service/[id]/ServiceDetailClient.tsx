@@ -92,6 +92,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
               sizes="100vw"
               className={`w-full h-full object-cover opacity-90 ${service.heroImagePosition || 'object-center'}`}
               priority
+              fetchPriority="high"
             />
           )}
         </motion.div>
