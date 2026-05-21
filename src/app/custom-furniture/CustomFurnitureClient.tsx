@@ -132,7 +132,7 @@ export default function CustomFurnitureClient() {
         {/* Wood Palette Section */}
         <section className="py-32 bg-white">
           <div className="container mx-auto px-8">
-            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20">
               <div className="max-w-2xl">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-[1px] bg-primary"></div>
