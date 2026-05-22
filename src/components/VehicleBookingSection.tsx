@@ -20,7 +20,8 @@ const vehicles = [
       availability: "Immediate"
     },
     features: ["GPS Tracking", "Heavy Duty Straps", "All-Weather Protection"],
-    image: "/assets/hiwood_bharatbenz.jpg",
+    image: "/assets/hiwood_bharatbenz_mud.jpg",
+    imagePosition: "object-bottom",
     description: "Primary carrier designed for large log bundles and heavy timber beams, ensuring safe and stable transit.",
     showWheels: true
   },

@@ -96,7 +96,7 @@ export const serviceData: ServiceData = {
         name: 'BharatBenz Timber Carrier',
         capacity: '35 Tons',
         type: 'Heavy Duty',
-        image: '/assets/hiwood_bharatbenz.jpg',
+        image: '/assets/hiwood_bharatbenz_mud.jpg',
         description: 'Primary carrier for large logs and heavy timber beams.',
         icon: Truck
       },
