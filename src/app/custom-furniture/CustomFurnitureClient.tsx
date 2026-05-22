@@ -128,7 +128,6 @@ export default function CustomFurnitureClient() {
             </div>
           </div>
         </section>
-        
         {/* Wood Palette Section */}
         <section className="py-32 bg-white">
           <div className="container mx-auto px-8">

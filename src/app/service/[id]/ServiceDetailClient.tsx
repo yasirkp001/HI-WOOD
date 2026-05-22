@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, X, ChevronRight, Droplets, Settings } from 'lucide-react';
+import { ArrowRight, X, ChevronRight, Droplets, Settings, ShoppingCart } from 'lucide-react';
 import VehicleBookingSection from '@/components/VehicleBookingSection';
+import OrderModal from '@/components/OrderModal';
 import { motion } from 'framer-motion';
 import { serviceData, Vehicle, ServiceFeature, ServiceSpec, WorkflowStep } from '@/data/serviceData';
 
@@ -31,6 +32,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
   const service = serviceData[id.toLowerCase()];
   
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
   const [selectedVehicle] = useState<Vehicle | null>(null);
   const [bookingDetails, setBookingDetails] = useState({
     tons: '',
@@ -333,13 +335,33 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase tracking-tight text-neutral-900">Ready to Start Your Project?</h2>
               <p className="text-neutral-500 text-lg mb-10">Contact our experts today to discuss your timber requirements and get a customized quote for your architectural needs.</p>
-              <Link href="/contact" className="inline-flex items-center gap-3 bg-neutral-900 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors group">
-                Contact Us
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                {id === 'mills' && (
+                  <button
+                    onClick={() => setIsOrderModalOpen(true)}
+                    className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest hover:brightness-110 transition-all shadow-lg shadow-primary/20 group"
+                  >
+                    <ShoppingCart size={20} />
+                    Place Order
+                  </button>
+                )}
+                <Link href="/contact" className="inline-flex items-center gap-3 bg-neutral-900 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors group">
+                  Contact Us
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             </div>
           </motion.div>
         </section>
+
+      {/* Order Modal — Mills only */}
+      {id === 'mills' && (
+        <OrderModal
+          isOpen={isOrderModalOpen}
+          onClose={() => setIsOrderModalOpen(false)}
+          serviceType="mills"
+        />
+      )}
 
       {/* Booking Modal */}
       {isBookingModalOpen && (
