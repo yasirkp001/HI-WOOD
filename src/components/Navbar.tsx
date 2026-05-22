@@ -43,7 +43,7 @@ const Navbar = () => {
         return (
           <div className="w-[850px] bg-white rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-8 flex gap-6 border border-black/5 backdrop-blur-3xl">
             {[
-              { title: 'Transportation', href: '/service/transportation', img: '/assets/hiwood_bharatbenz.jpg' },
+              { title: 'Transportation', href: '/service/transportation', img: '/images/IMG_0145.JPG' },
               { title: 'Mills & Production', href: '/service/mills', img: '/images/hero-bg-2.jpg' },
               { title: 'Custom Furniture', href: '/custom-furniture', img: '/assets/custom_furniture.png' }
             ].map((service) => (

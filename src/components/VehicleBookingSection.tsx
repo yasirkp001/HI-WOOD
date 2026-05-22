@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Truck, Calendar, ArrowRight, Gauge, Layers, Maximize, CheckCircle2, Shield, MapPin } from 'lucide-react';
+import { Truck, Calendar, ArrowRight, Gauge, Layers, Maximize, CheckCircle2, Shield, MapPin, Settings } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
@@ -21,7 +21,43 @@ const vehicles = [
     },
     features: ["GPS Tracking", "Heavy Duty Straps", "All-Weather Protection"],
     image: "/assets/hiwood_bharatbenz.jpg",
-    description: "Primary carrier designed for large log bundles and heavy timber beams, ensuring safe and stable transit."
+    description: "Primary carrier designed for large log bundles and heavy timber beams, ensuring safe and stable transit.",
+    showWheels: true
+  },
+  {
+    id: 2,
+    name: "XCMG CRAWLER LOG LOADER",
+    type: "HEAVY MACHINERY RENTAL",
+    category: "Crawler Excavator",
+    capacity: "15 Tons",
+    price: "Custom Quote",
+    specs: {
+      load: "Hydraulic Log Grab",
+      length: "8.5m Max Reach",
+      engine: "120 HP Turbo",
+      availability: "Immediate"
+    },
+    features: ["360° Rotating Grapple", "Rough Terrain Crawler Tracks", "High-Precision Hydraulics"],
+    image: "/assets/xcmg_excavator.jpg",
+    description: "High-performance crawler excavator equipped with a professional 360-degree rotating wood grapple. Engineered for wood logging operations, sawmill timber yards, and rough-terrain loading.",
+    hideTires: true
+  },
+  {
+    id: 3,
+    name: "ACE 14XW MOBILE CRANE",
+    type: "HYDRAULIC MOBILE CRANE RENTAL",
+    category: "Mobile Crane",
+    capacity: "14 Tons",
+    price: "Custom Quote",
+    specs: {
+      load: "14,000 KG",
+      length: "13m Hook Height",
+      engine: "101 HP Turbo",
+      availability: "Immediate"
+    },
+    features: ["4-Section Hydraulic Boom", "Precision Load Control", "Heavy-Duty Outriggers"],
+    image: "/assets/ace_crane.jpg",
+    description: "High-performance mobile hydraulic crane (Hydra) engineered for lifting heavy timber slabbing, logging operations, and safe mill-yard material handling."
   }
 ];
 
@@ -49,7 +85,9 @@ const VehicleBookingSection = () => {
       `⚖️ *BASE CAPACITY:* ${selectedVehicle.capacity}%0A%0A` +
       `*MY REQUIREMENTS:*%0A` +
       `🔹 *Required Tons:* ${bookingDetails.tons || 'Not specified'}%0A` +
-      `🔹 *Wheels Required:* ${bookingDetails.wheels || 'Not specified'}%0A` +
+      (selectedVehicle.showWheels 
+        ? `🔹 *Wheels Required:* ${bookingDetails.wheels || 'Not specified'}%0A` 
+        : '') +
       `🔹 *Destination:* ${bookingDetails.destination || 'Not specified'}%0A%0A` +
       `Please confirm availability for my project.%0A` +
       `━━━━━━━━━━━━━━━━━━━━%0A` +
@@ -85,7 +123,7 @@ const VehicleBookingSection = () => {
           </p>
         </div>
 
-        <motion.div layout className="flex justify-center max-w-4xl mx-auto">
+        <motion.div layout className="flex flex-col gap-12 max-w-5xl mx-auto w-full">
           <AnimatePresence>
             {vehicles.map((vehicle) => (
               <motion.div
@@ -174,7 +212,7 @@ const VehicleBookingSection = () => {
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0">
-                        <Truck size={18} className="text-primary" />
+                        {vehicle.hideTires ? <Settings size={18} className="text-primary" /> : <Truck size={18} className="text-primary" />}
                       </div>
                       <div>
                         <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Category</p>
@@ -291,21 +329,23 @@ const VehicleBookingSection = () => {
                     className="w-full bg-neutral-50 border border-black/10 rounded-xl px-4 py-3.5 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-primary focus:bg-white transition-all"
                   />
                 </div>
-                <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Number of Wheels</label>
-                  <select
-                    value={bookingDetails.wheels}
-                    onChange={(e) => setBookingDetails({ ...bookingDetails, wheels: e.target.value })}
-                    className="w-full bg-neutral-50 border border-black/10 rounded-xl px-4 py-3.5 text-neutral-900 focus:outline-none focus:border-primary focus:bg-white transition-all appearance-none cursor-pointer"
-                  >
-                    <option value="" className="bg-white">Select wheels</option>
-                    <option value="4" className="bg-white">4 Wheels</option>
-                    <option value="6" className="bg-white">6 Wheels</option>
-                    <option value="10" className="bg-white">10 Wheels</option>
-                    <option value="12" className="bg-white">12 Wheels</option>
-                    <option value="14+" className="bg-white">14+ Wheels</option>
-                  </select>
-                </div>
+                {selectedVehicle.showWheels && (
+                  <div>
+                    <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Number of Wheels</label>
+                    <select
+                      value={bookingDetails.wheels}
+                      onChange={(e) => setBookingDetails({ ...bookingDetails, wheels: e.target.value })}
+                      className="w-full bg-neutral-50 border border-black/10 rounded-xl px-4 py-3.5 text-neutral-900 focus:outline-none focus:border-primary focus:bg-white transition-all appearance-none cursor-pointer"
+                    >
+                      <option value="" className="bg-white">Select wheels</option>
+                      <option value="4" className="bg-white">4 Wheels</option>
+                      <option value="6" className="bg-white">6 Wheels</option>
+                      <option value="10" className="bg-white">10 Wheels</option>
+                      <option value="12" className="bg-white">12 Wheels</option>
+                      <option value="14+" className="bg-white">14+ Wheels</option>
+                    </select>
+                  </div>
+                )}
                 <div>
                   <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Destination Location</label>
                   <input

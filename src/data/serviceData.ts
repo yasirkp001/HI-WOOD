@@ -76,7 +76,7 @@ export const serviceData: ServiceData = {
   'transportation': {
     title: 'TRANSPORTATION',
     subtitle: 'Logistics & Transportation',
-    heroImage: '/assets/hiwood_bharatbenz.jpg',
+    heroImage: '/images/IMG_0145.JPG',
     heroVideo: '/assets/IMG_6053.MP4',
     description: 'Specialized logistics for delicate timber and heavy beams. We ensure your materials arrive in pristine condition.',
     features: [
@@ -99,6 +99,23 @@ export const serviceData: ServiceData = {
         image: '/assets/hiwood_bharatbenz.jpg',
         description: 'Primary carrier for large logs and heavy timber beams.',
         icon: Truck
+      },
+      {
+        name: 'XCMG Crawler Log Loader',
+        capacity: '15 Tons',
+        type: 'Log Grabber',
+        image: '/assets/xcmg_excavator.jpg',
+        description: 'Heavy duty crawler excavator with a 360° log grab attachment.',
+        icon: Settings,
+        hideTires: true
+      },
+      {
+        name: 'ACE 14XW Mobile Crane',
+        capacity: '14 Tons',
+        type: 'Mobile Crane',
+        image: '/assets/ace_crane.jpg',
+        description: 'High-performance mobile hydraulic crane for heavy timber slabbing and loading.',
+        icon: Settings
       }
     ]
   }

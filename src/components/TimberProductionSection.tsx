@@ -13,7 +13,7 @@ const TimberProductionSection = () => {
     {
       id: 1,
       title: "TRANSPORTATION",
-      image: "/assets/hiwood_bharatbenz.jpg",
+      image: "/images/IMG_0145.JPG",
       link: "/service/transportation",
       orderType: "transportation" as OrderServiceType,
     },
