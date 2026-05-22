@@ -8,58 +8,58 @@ import Image from 'next/image';
 const vehicles = [
   {
     id: 1,
-    name: "BHARATBENZ TIMBER CARRIER",
+    name: "BHARATBENZ 3523R TIMBER CARRIER",
     type: "HEAVY DUTY LOG TRANSPORT",
-    category: "Heavy Duty",
-    capacity: "35 Tons",
+    category: "35-Ton Multi-Axle Truck",
+    capacity: "35 Tons GVW",
     price: "Custom Quote",
     specs: {
-      load: "35,000 KG",
-      length: "Up to 12m Logs",
-      engine: "350 HP Turbo",
+      load: "26,300 KG Payload",
+      length: "Up to 12m (40ft) Logs",
+      engine: "OM926 6-Cyl 242 HP",
       availability: "Immediate"
     },
-    features: ["GPS Tracking", "Heavy Duty Straps", "All-Weather Protection"],
+    features: ["GPS Live Fleet Tracking", "Heavy-Duty Log Bolsters", "10-Point Tension Straps"],
     image: "/assets/hiwood_bharatbenz_mud.jpg",
     imagePosition: "object-bottom",
-    description: "Primary carrier designed for large log bundles and heavy timber beams, ensuring safe and stable transit.",
+    description: "Primary multi-axle heavy carrier engineered for massive logs and heavy timber beams, ensuring safe, stable, and highly-secured transit across both forest tracks and highways.",
     showWheels: true
   },
   {
     id: 2,
-    name: "XCMG CRAWLER LOG LOADER",
+    name: "XCMG XE150D CRAWLER LOG LOADER",
     type: "HEAVY MACHINERY RENTAL",
-    category: "Crawler Excavator",
-    capacity: "15 Tons",
-    price: "Custom Quote",
+    category: "15-Ton Excavator",
+    capacity: "15 Tons Weight",
+    price: "Custom Quote",  
     specs: {
       load: "Hydraulic Log Grab",
-      length: "8.5m Max Reach",
-      engine: "120 HP Turbo",
+      width: "8.5m Max Reach",
+      engine: "Cummins 4BTAA 116 HP",
       availability: "Immediate"
     },
-    features: ["360° Rotating Grapple", "Rough Terrain Crawler Tracks", "High-Precision Hydraulics"],
+    features: ["360° Rotating Grapple", "Heavy-Duty Crawler Tracks", "High-Precision Control"],
     image: "/assets/xcmg_excavator.jpg",
-    description: "High-performance crawler excavator equipped with a professional 360-degree rotating wood grapple. Engineered for wood logging operations, sawmill timber yards, and rough-terrain loading.",
+    description: "High-performance crawler excavator equipped with a 360-degree rotating hydraulic wood grapple. Specially engineered for logging operations, sawmill log yards, and rough-terrain timber loading.",
     hideTires: true
   },
   {
     id: 3,
     name: "ACE 14XW MOBILE CRANE",
     type: "HYDRAULIC MOBILE CRANE RENTAL",
-    category: "Mobile Crane",
-    capacity: "14 Tons",
+    category: "14-Ton Pick & Carry",
+    capacity: "14 Tons Lift",
     price: "Custom Quote",
     specs: {
-      load: "14,000 KG",
-      length: "13m Hook Height",
-      engine: "101 HP Turbo",
+      load: "14,000 KG Max Lift",
+      length: "15.1m Hook Height",
+      engine: "Simpson S433 48 HP",
       availability: "Immediate"
     },
-    features: ["4-Section Hydraulic Boom", "Precision Load Control", "Heavy-Duty Outriggers"],
+    features: ["4-Section Hydraulic Boom", "55° Articulated Steering", "Heavy-Duty Outriggers"],
     image: "/assets/ace_crane.jpg",
     imagePosition: "object-bottom",
-    description: "High-performance mobile hydraulic crane (Hydra) engineered for lifting heavy timber slabbing, logging operations, and safe mill-yard material handling."
+    description: "High-performance articulated hydraulic pick-and-carry crane (Hydra) engineered for lifting heavy timber slabbing, sawmill operations, and safe yard material handling."
   }
 ];
 
@@ -138,7 +138,7 @@ const VehicleBookingSection = () => {
                 className="group bg-white rounded-[32px] overflow-hidden border border-black/5 hover:border-primary/30 transition-all duration-500 flex flex-col lg:flex-row shadow-xl w-full"
               >
                 {/* Image Side */}
-                <div className="lg:w-2/5 relative overflow-hidden h-80 sm:h-96 lg:h-auto">
+                <div className="lg:w-2/5 relative overflow-hidden h-[450px] sm:h-[550px] lg:h-auto">
                   <Image
                     src={vehicle.image}
                     alt={vehicle.name}
@@ -199,8 +199,12 @@ const VehicleBookingSection = () => {
                         <Maximize size={18} className="text-primary" />
                       </div>
                       <div>
-                        <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">Max Length</p>
-                        <p className="text-neutral-900 font-bold">{vehicle.specs.length}</p>
+                        <p className="text-[10px] text-gray-500 uppercase font-bold tracking-widest">
+                          {vehicle.id === 1 ? "Max Length" : vehicle.id === 2 ? "Max Reach" : "Hook Height"}
+                        </p>
+                        <p className="text-neutral-900 font-bold">
+                          {(vehicle.specs as any).length || (vehicle.specs as any).width}
+                        </p>
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
