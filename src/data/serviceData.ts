@@ -76,7 +76,7 @@ export const serviceData: ServiceData = {
   'transportation': {
     title: 'TRANSPORTATION',
     subtitle: 'Logistics & Transportation',
-    heroImage: '/assets/transport.jpg',
+    heroImage: '/assets/hiwood_bharatbenz.jpg',
     heroVideo: '/assets/IMG_6053.MP4',
     description: 'Specialized logistics for delicate timber and heavy beams. We ensure your materials arrive in pristine condition.',
     features: [
@@ -96,7 +96,7 @@ export const serviceData: ServiceData = {
         name: 'BharatBenz Timber Carrier',
         capacity: '35 Tons',
         type: 'Heavy Duty',
-        image: '/assets/transport.jpg',
+        image: '/assets/hiwood_bharatbenz.jpg',
         description: 'Primary carrier for large logs and heavy timber beams.',
         icon: Truck
       }

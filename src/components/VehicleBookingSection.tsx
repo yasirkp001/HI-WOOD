@@ -20,7 +20,7 @@ const vehicles = [
       availability: "Immediate"
     },
     features: ["GPS Tracking", "Heavy Duty Straps", "All-Weather Protection"],
-    image: "/assets/transport.jpg",
+    image: "/assets/hiwood_bharatbenz.jpg",
     description: "Primary carrier designed for large log bundles and heavy timber beams, ensuring safe and stable transit."
   }
 ];
@@ -66,7 +66,7 @@ const VehicleBookingSection = () => {
       {/* Background Image Overlay */}
       <div className="absolute inset-0 opacity-[0.03] grayscale pointer-events-none">
         <Image
-          src="/assets/transport.jpg"
+          src="/assets/hiwood_bharatbenz.jpg"
           alt="background"
           fill
           sizes="100vw"
