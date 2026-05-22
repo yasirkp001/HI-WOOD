@@ -137,7 +137,7 @@ const VehicleBookingSection = () => {
                 className="group bg-white rounded-[32px] overflow-hidden border border-black/5 hover:border-primary/30 transition-all duration-500 flex flex-col lg:flex-row shadow-xl w-full"
               >
                 {/* Image Side */}
-                <div className="lg:w-2/5 relative overflow-hidden h-72 lg:h-auto">
+                <div className="lg:w-2/5 relative overflow-hidden h-80 sm:h-96 lg:h-auto">
                   <Image
                     src={vehicle.image}
                     alt={vehicle.name}
