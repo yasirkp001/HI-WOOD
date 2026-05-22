@@ -51,8 +51,8 @@ export const serviceData: ServiceData = {
     title: 'MILLS',
     subtitle: 'The Science of High-Precision Milling',
     heroImage: '/images/mills hero section.JPG',
-    heroImagePosition: 'object-center',
-    detailImagePosition: 'object-center',
+    heroImagePosition: 'object-[55%_center]',
+    detailImagePosition: 'object-[55%_center]',
     description: 'Precision industrial milling at the heart of HI WOOD. We transform sustainably sourced raw logs into architecturally-perfect timber with millimeter accuracy and expert seasoning for lasting quality.',
     features: [
       { icon: Shield, title: 'Premium Sourcing', desc: 'Hand-picked Teak, Rosewood, and Mahogany from certified sources.' },
