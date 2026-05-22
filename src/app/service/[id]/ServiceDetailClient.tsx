@@ -95,6 +95,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
               className={`w-full h-full object-cover opacity-90 ${service.heroImagePosition || 'object-center'}`}
               priority
               fetchPriority="high"
+              unoptimized
             />
           )}
         </motion.div>
@@ -194,7 +195,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
             >
               <div className="rounded-[40px] overflow-hidden relative group aspect-[4/5] lg:aspect-auto lg:h-[700px] border border-neutral-200">
                 <Image 
-                  src={service.heroImage} 
+                  src={service.detailImage || service.heroImage} 
                   alt={service.title} 
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"

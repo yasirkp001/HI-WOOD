@@ -32,6 +32,7 @@ export interface ServiceItem {
   title: string;
   subtitle: string;
   heroImage: string;
+  detailImage?: string;
   heroImagePosition?: string;
   detailImagePosition?: string;
   heroVideo?: string;
@@ -40,6 +41,7 @@ export interface ServiceItem {
   specs?: ServiceSpec[];
   workflow?: WorkflowStep[];
   vehicles?: Vehicle[];
+  hideTires?: boolean;
 }
 
 export interface ServiceData {
@@ -51,6 +53,7 @@ export const serviceData: ServiceData = {
     title: 'MILLS',
     subtitle: 'The Science of High-Precision Milling',
     heroImage: '/images/mills hero section.JPG',
+    detailImage: '/assets/IMG_6667.JPG',
     heroImagePosition: 'object-[55%_center]',
     detailImagePosition: 'object-[55%_center]',
     description: 'Precision industrial milling at the heart of HI WOOD. We transform sustainably sourced raw logs into architecturally-perfect timber with millimeter accuracy and expert seasoning for lasting quality.',
