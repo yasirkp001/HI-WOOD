@@ -53,7 +53,7 @@ const TimberProductionSection = () => {
             {cards.map((card) => (
               <div
                 key={card.id}
-                className="relative rounded-3xl overflow-hidden h-[300px] lg:h-full transition-all duration-700 ease-in-out flex-[1] lg:hover:flex-[4] group"
+                className="relative rounded-3xl overflow-hidden h-[300px] lg:h-full transition-all duration-700 ease-in-out lg:flex-[1] lg:hover:flex-[4] group"
               >
                 {/* Background Image */}
                 <Image
@@ -66,7 +66,7 @@ const TimberProductionSection = () => {
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-black/30 transition-opacity duration-300 group-hover:bg-black/55" />
+                <div className="absolute inset-0 bg-black/45 lg:bg-black/30 transition-opacity duration-300 lg:group-hover:bg-black/55" />
 
                 {/* Text + Buttons */}
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-6">
@@ -75,8 +75,8 @@ const TimberProductionSection = () => {
                     {card.title}
                   </h4>
 
-                  {/* Action Buttons — appear on hover */}
-                  <div className="flex flex-col sm:flex-row items-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+                  {/* Action Buttons — always visible on mobile, hover-triggered on desktop */}
+                  <div className="flex flex-col sm:flex-row items-center gap-3 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
 
                     {/* Order Button */}
                     <button
@@ -99,13 +99,6 @@ const TimberProductionSection = () => {
                       Explore
                       <ArrowRight size={13} />
                     </Link>
-                  </div>
-                </div>
-
-                {/* Mobile arrow (always visible) */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 lg:hidden">
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
-                    <ArrowRight size={18} className="text-white" />
                   </div>
                 </div>
               </div>
