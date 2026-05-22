@@ -57,6 +57,7 @@ const vehicles = [
     },
     features: ["4-Section Hydraulic Boom", "Precision Load Control", "Heavy-Duty Outriggers"],
     image: "/assets/ace_crane.jpg",
+    imagePosition: "object-bottom",
     description: "High-performance mobile hydraulic crane (Hydra) engineered for lifting heavy timber slabbing, logging operations, and safe mill-yard material handling."
   }
 ];
@@ -142,7 +143,7 @@ const VehicleBookingSection = () => {
                     alt={vehicle.name}
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className={`object-cover transition-transform duration-700 group-hover:scale-110 ${vehicle.imagePosition || 'object-center'}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent lg:bg-gradient-to-r"></div>
 
