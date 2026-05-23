@@ -7,6 +7,8 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { validatePhoneNumber } from '@/utils/phoneValidation';
+import InternationalPhoneInput from '@/components/InternationalPhoneInput';
 
 import dynamic from 'next/dynamic';
 const PopularFurniture = dynamic(() => import('@/components/PopularFurniture'), {
@@ -27,6 +29,8 @@ export default function CustomFurnitureClient() {
   const [selectedWood, setSelectedWood] = React.useState(woodPaletteData[0]);
   const [length, setLength] = React.useState<number>(6);
   const [width, setWidth] = React.useState<number>(3);
+  const [cfPhone, setCfPhone] = React.useState('');
+  const [cfPhoneError, setCfPhoneError] = React.useState('');
 
   const sqFt = length * width;
   const estimatedCost = sqFt * selectedWood.pricePerSqFt;
@@ -493,12 +497,16 @@ export default function CustomFurnitureClient() {
                   className="space-y-6" 
                   onSubmit={(e) => {
                     e.preventDefault();
+                    const validation = validatePhoneNumber(cfPhone);
+                    if (!validation.isValid) {
+                      setCfPhoneError(validation.error || 'Please enter a valid phone number.');
+                      return;
+                    }
                     const formData = new FormData(e.currentTarget);
                     const name = formData.get('name');
-                    const phone = formData.get('phone');
                     const type = formData.get('type');
                     const message = formData.get('message');
-                    const wpMsg = `Hi Hi Wood! I'm requesting a quote.\n\nName: ${name}\nPhone: ${phone}\nFurniture Type: ${type}\nRequirements: ${message}`;
+                    const wpMsg = `Hi Hi Wood! I'm requesting a quote.\n\nName: ${name}\nPhone: ${validation.cleanedNumber}\nFurniture Type: ${type}\nRequirements: ${message}`;
                     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(wpMsg)}`, '_blank');
                   }}
                 >
@@ -507,9 +515,15 @@ export default function CustomFurnitureClient() {
                       <label className="text-[9px] font-black uppercase tracking-widest text-neutral-500">Full Name</label>
                       <input name="name" type="text" required className="w-full bg-white border border-black/5 rounded-2xl px-6 py-4 text-sm outline-none focus:border-primary/50 transition-all text-neutral-900" placeholder="John Doe" />
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 flex flex-col justify-end">
                       <label className="text-[9px] font-black uppercase tracking-widest text-neutral-500">Phone Number</label>
-                      <input name="phone" type="tel" required className="w-full bg-white border border-black/5 rounded-2xl px-6 py-4 text-sm outline-none focus:border-primary/50 transition-all text-neutral-900" placeholder="+91 00000 00000" />
+                      <InternationalPhoneInput 
+                        value={cfPhone}
+                        onChange={(fullNumber) => setCfPhone(fullNumber)}
+                        phoneError={cfPhoneError}
+                        setPhoneError={setCfPhoneError}
+                        inputStyleClass="pl-2 focus:border-none focus:outline-none"
+                      />
                     </div>
                   </div>
                   <div className="space-y-2">

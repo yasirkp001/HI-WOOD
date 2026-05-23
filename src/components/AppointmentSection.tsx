@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Phone, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
+import { validatePhoneNumber } from '../utils/phoneValidation';
+import InternationalPhoneInput from './InternationalPhoneInput';
 
 const AppointmentSection = () => {
   const [formData, setFormData] = useState({
@@ -12,21 +14,39 @@ const AppointmentSection = () => {
     phone: '',
     service: ''
   });
+  const [phoneError, setPhoneError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    let { name, value } = e.target;
+    if (name === 'phone') {
+      // Prevent letters and invalid characters immediately
+      value = value.replace(/[^0-9\s+\-()]/g, '');
+      const validation = validatePhoneNumber(value);
+      if (value) {
+        setPhoneError(validation.error || '');
+      } else {
+        setPhoneError('');
+      }
+    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const { firstName, lastName, email, phone, service } = formData;
     
+    const validation = validatePhoneNumber(phone);
+    if (!validation.isValid) {
+      setPhoneError(validation.error || 'Please enter a valid phone number.');
+      return;
+    }
+    
     const message = `🌲 *HI WOOD - NEW APPOINTMENT* 🌲%0A` +
                     `━━━━━━━━━━━━━━━━━━━━%0A` +
                     `👋 *Hello HI WOOD Team,*%0A%0A` +
                     `I would like to request an appointment/service. Here are my details:%0A%0A` +
                     `👤 *Name:* ${firstName} ${lastName}%0A` +
-                    `📞 *Phone:* ${phone}%0A` +
+                    `📞 *Phone:* ${validation.cleanedNumber}%0A` +
                     `✉️ *Email:* ${email}%0A` +
                     `🛠️ *Service:* ${service}%0A%0A` +
                     `Looking forward to hearing from you!%0A` +
@@ -86,13 +106,13 @@ const AppointmentSection = () => {
               required
               className="w-full bg-transparent border-b border-black/20 py-3 text-neutral-900 placeholder-gray-400 focus:outline-none focus:border-accent transition-colors"
             />
-            <input 
-              type="tel" 
-              name="phone"
-              placeholder="Phone Number" 
-              onChange={handleChange}
-              required
-              className="w-full bg-transparent border-b border-black/20 py-3 text-neutral-900 placeholder-gray-400 focus:outline-none focus:border-accent transition-colors"
+            <InternationalPhoneInput 
+              value={formData.phone}
+              onChange={(fullNumber) => setFormData({ ...formData, phone: fullNumber })}
+              phoneError={phoneError}
+              setPhoneError={setPhoneError}
+              isTransparent={true}
+              inputStyleClass="pl-2 focus:border-none focus:outline-none"
             />
           </div>
 

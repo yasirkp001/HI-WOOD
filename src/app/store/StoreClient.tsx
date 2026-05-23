@@ -66,9 +66,19 @@ export default function StoreClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: idx * 0.1 }}
-                className="flex flex-col items-center gap-16 lg:gap-24"
+                className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24"
               >
-
+                {/* Branch Image */}
+                <div className="w-full lg:w-1/2 relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-black/5 shadow-2xl">
+                  <Image 
+                    src={branch.image} 
+                    alt={branch.city} 
+                    fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-700 hover:scale-105" 
+                  />
+                  <div className="absolute inset-0 bg-black/10"></div>
+                </div>
 
                 {/* Branch Details */}
                 <div className="w-full lg:w-1/2 space-y-10 bg-white/20 backdrop-blur-xl rounded-[2rem] border border-white/30 p-8 md:p-12 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">

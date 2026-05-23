@@ -84,9 +84,97 @@ const catalogItems = [
     price: "Custom"
   },
 
+  // OFFICE
+  {
+    id: 9,
+    name: "Modern Executive Desk",
+    description: "Spacious mahogany workspace with clean lines, built-in soft-close drawers, and integrated cable management.",
+    image: "/images/furniture-5.jpg",
+    rating: 5,
+    category: "Office",
+    price: "Custom"
+  },
+  {
+    id: 10,
+    name: "Teak Wood Office Bookshelf",
+    description: "Premium teak cabinet featuring modern floating open shelving combined with traditional sliding wood shutter cupboards.",
+    image: "/images/furniture-4.jpg",
+    rating: 5,
+    category: "Office",
+    price: "Custom"
+  },
+
+  // LIVING
+  {
+    id: 11,
+    name: "Scandinavian Oak Sideboard",
+    description: "Minimalist light oak credenza utilizing soft-slide solid wood doors for sophisticated living room organization.",
+    image: "/images/furniture-6.jpg",
+    rating: 5,
+    category: "Living",
+    price: "Custom"
+  },
+  {
+    id: 12,
+    name: "Live Edge Coffee Table",
+    description: "Natural edge solid rosewood coffee table slab resting on custom handcrafted raw-finish steel hair-pin legs.",
+    image: "/images/furniture-8.jpg",
+    rating: 5,
+    category: "Living",
+    price: "Custom"
+  },
+  {
+    id: 13,
+    name: "Minimalist Floating TV Console",
+    description: "Sturdy wall-mounted teak console with sleek wire passageways and subtle fluted wooden cabinet front panels.",
+    image: "/images/furniture-3.jpg",
+    rating: 4,
+    category: "Living",
+    price: "Custom"
+  },
+
+  // STORAGE
+  {
+    id: 14,
+    name: "Solid Mahogany Sideboard",
+    description: "Sophisticated multi-drawer mahogany credenza with custom antique-finish brass handles and generous internal shelving.",
+    image: "/images/furniture-1.jpg",
+    rating: 5,
+    category: "Storage",
+    price: "Custom"
+  },
+  {
+    id: 15,
+    name: "Minimalist Oak Credenza",
+    description: "Premium European white oak cabinet offering a flawless, clean design with touch-release storage cabinets.",
+    image: "/images/furniture-6.jpg",
+    rating: 4,
+    category: "Storage",
+    price: "Custom"
+  },
+
+  // SEATING
+  {
+    id: 16,
+    name: "Lattice Back Accent Chair",
+    description: "Heritage-carved occasion armchair showcasing elegant geometric lattice work on the backrest, finished in deep rosewood.",
+    image: "/images/furniture-4.jpg",
+    rating: 5,
+    category: "Seating",
+    price: "Custom"
+  },
+  {
+    id: 17,
+    name: "Traditional Rocking Chair",
+    description: "An authentic, heritage-inspired teak wood rocking chair designed with custom ergonomic contouring for deep comfort.",
+    image: "/images/furniture-8.jpg",
+    rating: 5,
+    category: "Seating",
+    price: "Custom"
+  }
 ];
 
-const categories = ["All", "Dining", "Bedroom"];
+const categories = ["All", "Dining", "Bedroom", "Office", "Living", "Storage", "Seating"];
 
 function CatalogContent() {
   const searchParams = useSearchParams();

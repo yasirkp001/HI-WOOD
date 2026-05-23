@@ -103,7 +103,7 @@ const Footer = () => {
           <div className="lg:col-span-4 space-y-8">
             <motion.h4 variants={itemVariants} className="text-primary text-[10px] font-bold uppercase tracking-[0.4em]">Get in Touch</motion.h4>
             <motion.div variants={itemVariants} className="space-y-5">
-              <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 text-neutral-500 hover:text-neutral-900 transition-colors group">
+              <a href="https://www.google.com/maps/place/Hi+WOOD/@11.2484096,75.8507352,17z/data=!3m1!1b1!4m6!3m5!1s0x3ba65bdcfe024db3:0x2cd0887ca4e627a1!8m2!3d11.2484096!4d75.8507352!16s%2Fg%2F11f01p1y1n" target="_blank" rel="noopener noreferrer" className="flex items-start gap-4 text-neutral-500 hover:text-neutral-900 transition-colors group">
                 <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
                 <span className="text-sm font-light leading-relaxed">Palazhi, Calicut, Kerala, India</span>
               </a>

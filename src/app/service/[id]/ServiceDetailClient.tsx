@@ -31,35 +31,12 @@ const staggerContainer = {
 export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
   const service = serviceData[id.toLowerCase()];
   
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
-  const [selectedVehicle] = useState<Vehicle | null>(null);
-  const [bookingDetails, setBookingDetails] = useState({
-    tons: '',
-    tires: '',
-    location: ''
-  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  const handleBookingSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedVehicle) return;
-    
-    const message = `🌲 *HI WOOD - VEHICLE BOOKING* 🌲%0A` +
-                    `━━━━━━━━━━━━━━━━━━━━%0A` +
-                    `🚛 *Vehicle:* ${selectedVehicle?.name || 'N/A'}%0A` +
-                    `⚖️ *Load Weight:* ${bookingDetails.tons} Tons%0A` +
-                    (selectedVehicle?.hideTires ? '' : `🛞 *Tires:* ${bookingDetails.tires}%0A`) +
-                    `📍 *Location:* ${bookingDetails.location}%0A` +
-                    `━━━━━━━━━━━━━━━━━━━━%0A` +
-                    `_Sent via hiwood.com_`;
-    
-    window.open(`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918086687342'}?text=${message}`, '_blank');
-    setIsBookingModalOpen(false);
-  };
 
   if (!service) return null;
 
@@ -122,18 +99,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
           </motion.div>
         </div>
         
-        {/* Simple static scroll indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2"
-        >
-          <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">Scroll Down</span>
-          <div className="w-[1px] h-12 bg-black/20 overflow-hidden relative">
-            <div className="absolute top-0 left-0 w-full h-1/2 bg-primary animate-[bounce_2s_infinite]"></div>
-          </div>
-        </motion.div>
+
       </section>
 
       {/* Main Content Section */}
@@ -253,11 +219,12 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                 </div>
               </div>
               <div className="lg:w-1/2 relative">
-                <div className="aspect-square rounded-[40px] overflow-hidden border border-black/5 relative">
+                <div className="aspect-square rounded-[40px] overflow-hidden border border-black/5 relative w-full h-full min-h-[300px] md:min-h-[450px]">
                   <Image 
                     src="/assets/IMG_6664.JPG" 
                     alt="Machinery" 
                     fill 
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover opacity-80"
                   />
                   <div className="absolute inset-0 bg-black/10"></div>
@@ -364,78 +331,6 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
         />
       )}
 
-      {/* Booking Modal */}
-      {isBookingModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            exit={{ opacity: 0 }} 
-            className="absolute inset-0 bg-white/90" 
-            onClick={() => setIsBookingModalOpen(false)}
-          />
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ type: "spring", duration: 0.5 }}
-            className="relative bg-white border border-neutral-200 rounded-[40px] p-8 md:p-12 w-full max-w-lg shadow-2xl"
-          >
-            <button 
-              onClick={() => setIsBookingModalOpen(false)}
-              className="absolute top-6 right-6 text-neutral-500 hover:text-neutral-900 transition-colors"
-            >
-              <X size={24} />
-            </button>
-
-            <h3 className="text-2xl font-black mb-2 uppercase tracking-tight text-neutral-900">Book {selectedVehicle?.name}</h3>
-            <p className="text-neutral-500 text-sm mb-8">Please provide more details for your transportation request.</p>
-
-            <form onSubmit={handleBookingSubmit} className="space-y-6">
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Estimated Load (Tons)</label>
-                <input 
-                  type="number" 
-                  required
-                  placeholder="e.g. 25"
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-5 py-4 text-neutral-900 focus:outline-none focus:border-primary transition-colors"
-                  onChange={(e) => setBookingDetails({...bookingDetails, tons: e.target.value})}
-                />
-              </div>
-
-              {!selectedVehicle?.hideTires && (
-                <div>
-                  <label className="block text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Number of Tires</label>
-                  <input 
-                    type="text" 
-                    placeholder="e.g. 10 Wheeler / 12 Wheeler"
-                    className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-5 py-4 text-neutral-900 focus:outline-none focus:border-primary transition-colors"
-                    onChange={(e) => setBookingDetails({...bookingDetails, tires: e.target.value})}
-                  />
-                </div>
-              )}
-
-              <div>
-                <label className="block text-[10px] font-bold uppercase tracking-widest text-primary mb-2">Pick-up & Drop-off Location</label>
-                <input 
-                  type="text" 
-                  required
-                  placeholder="e.g. Palazhi to Kochi"
-                  className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-5 py-4 text-neutral-900 focus:outline-none focus:border-primary transition-colors"
-                  onChange={(e) => setBookingDetails({...bookingDetails, location: e.target.value})}
-                />
-              </div>
-
-              <button 
-                type="submit"
-                className="w-full bg-primary hover:bg-green-600 text-white font-black py-5 rounded-2xl transition-colors tracking-widest uppercase mt-4"
-              >
-                CONFIRM ON WHATSAPP
-              </button>
-            </form>
-          </motion.div>
-        </div>
-      )}
     </div>
   );
 }

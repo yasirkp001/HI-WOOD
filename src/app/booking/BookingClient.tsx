@@ -4,25 +4,33 @@ import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, User, Mail, Phone, MessageSquare, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { validatePhoneNumber } from '@/utils/phoneValidation';
+import InternationalPhoneInput from '@/components/InternationalPhoneInput';
 
 function BookingForm() {
   const searchParams = useSearchParams();
   const serviceName = searchParams.get('service') || 'General Inquiry';
   const [isSubmitted, setIsSubmitted] = React.useState(false);
+  const [phone, setPhone] = React.useState('');
+  const [phoneError, setPhoneError] = React.useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const validation = validatePhoneNumber(phone);
+    if (!validation.isValid) {
+      setPhoneError(validation.error || 'Please enter a valid phone number.');
+      return;
+    }
     const formData = new FormData(e.target as HTMLFormElement);
     const name = formData.get('name');
     const email = formData.get('email');
-    const phone = formData.get('phone');
     const details = formData.get('details');
 
     const message = `Hello Hi Wood! I would like to book a service.%0A%0A` +
       `*Service:* ${serviceName}%0A` +
       `*Name:* ${name}%0A` +
       `*Email:* ${email}%0A` +
-      `*Phone:* ${phone}%0A` +
+      `*Phone:* ${validation.cleanedNumber}%0A` +
       `*Project Details:* ${details}`;
 
     const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '918086687342';
@@ -135,18 +143,15 @@ function BookingForm() {
                     />
                   </div>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-3 flex flex-col justify-end">
                   <label className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-400 ml-1">Phone Number</label>
-                  <div className="relative">
-                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-300" size={18} />
-                    <input 
-                      required 
-                      name="phone"
-                      type="tel" 
-                      placeholder="+91 98765 43210"
-                      className="w-full pl-12 pr-6 py-4 bg-neutral-50 border border-neutral-100 rounded-2xl focus:outline-none focus:border-primary/30 focus:bg-white transition-all text-neutral-900" 
-                    />
-                  </div>
+                  <InternationalPhoneInput 
+                    value={phone}
+                    onChange={(fullNumber) => setPhone(fullNumber)}
+                    phoneError={phoneError}
+                    setPhoneError={setPhoneError}
+                    inputStyleClass="pl-2 focus:border-none focus:outline-none"
+                  />
                 </div>
                 <div className="space-y-3">
                   <label className="text-[10px] font-bold tracking-[0.2em] uppercase text-neutral-400 ml-1">Selected Service</label>

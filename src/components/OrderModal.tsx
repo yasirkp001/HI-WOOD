@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, User, Phone, MapPin, Package, Truck, Layers, CheckCircle2 } from "lucide-react";
+import { validatePhoneNumber } from "../utils/phoneValidation";
+import InternationalPhoneInput from "./InternationalPhoneInput";
 
 export type OrderServiceType = "mills" | "transportation" | "custom-furniture";
 
@@ -41,16 +43,34 @@ function MillsOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
   const [form, setForm] = useState({
     name: "", phone: "", species: "Teak", length: "", width: "", thickness: "", qty: "", drying: "Kiln-Dried (KD)",
   });
+  const [phoneError, setPhoneError] = useState('');
 
-  const handle = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }));
+  const handle = (k: string, v: string) => {
+    let val = v;
+    if (k === 'phone') {
+      val = val.replace(/[^0-9\s+\-()]/g, '');
+      const validation = validatePhoneNumber(val);
+      if (val) {
+        setPhoneError(validation.error || '');
+      } else {
+        setPhoneError('');
+      }
+    }
+    setForm(f => ({ ...f, [k]: val }));
+  };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    const validation = validatePhoneNumber(form.phone);
+    if (!validation.isValid) {
+      setPhoneError(validation.error || 'Please enter a valid phone number.');
+      return;
+    }
     const msg =
       `🌲 *HI WOOD – MILLS ORDER* 🌲\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
       `👤 *Name:* ${form.name}\n` +
-      `📞 *Phone:* ${form.phone}\n` +
+      `📞 *Phone:* ${validation.cleanedNumber}\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
       `🪵 *Wood Species:* ${form.species}\n` +
       `📏 *Dimensions:* ${form.length} ft (L) × ${form.width} ft (W) × ${form.thickness} mm (T)\n` +
@@ -74,12 +94,15 @@ function MillsOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
             <input required className={`${inputCls} pl-9`} placeholder="Your name" value={form.name} onChange={e => handle("name", e.target.value)} />
           </div>
         </div>
-        <div>
+        <div className="flex flex-col justify-end">
           <label className={labelCls}>Phone</label>
-          <div className="relative">
-            <Phone size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
-            <input required className={`${inputCls} pl-9`} placeholder="+91 00000 00000" value={form.phone} onChange={e => handle("phone", e.target.value)} />
-          </div>
+          <InternationalPhoneInput 
+            value={form.phone}
+            onChange={(fullNumber) => handle("phone", fullNumber)}
+            phoneError={phoneError}
+            setPhoneError={setPhoneError}
+            inputStyleClass="pl-2 focus:border-none focus:outline-none"
+          />
         </div>
       </div>
 
@@ -140,16 +163,34 @@ function TransportOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
   const [form, setForm] = useState({
     name: "", phone: "", pickup: "", drop: "", loadType: "Timber Logs", weight: "", date: "",
   });
+  const [phoneError, setPhoneError] = useState('');
 
-  const handle = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }));
+  const handle = (k: string, v: string) => {
+    let val = v;
+    if (k === 'phone') {
+      val = val.replace(/[^0-9\s+\-()]/g, '');
+      const validation = validatePhoneNumber(val);
+      if (val) {
+        setPhoneError(validation.error || '');
+      } else {
+        setPhoneError('');
+      }
+    }
+    setForm(f => ({ ...f, [k]: val }));
+  };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    const validation = validatePhoneNumber(form.phone);
+    if (!validation.isValid) {
+      setPhoneError(validation.error || 'Please enter a valid phone number.');
+      return;
+    }
     const msg =
       `🚛 *HI WOOD – TRANSPORT ORDER* 🚛\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
       `👤 *Name:* ${form.name}\n` +
-      `📞 *Phone:* ${form.phone}\n` +
+      `📞 *Phone:* ${validation.cleanedNumber}\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
       `📍 *Pickup:* ${form.pickup}\n` +
       `📦 *Drop:* ${form.drop}\n` +
@@ -174,12 +215,15 @@ function TransportOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
             <input required className={`${inputCls} pl-9`} placeholder="Your name" value={form.name} onChange={e => handle("name", e.target.value)} />
           </div>
         </div>
-        <div>
+        <div className="flex flex-col justify-end">
           <label className={labelCls}>Phone</label>
-          <div className="relative">
-            <Phone size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
-            <input required className={`${inputCls} pl-9`} placeholder="+91 00000 00000" value={form.phone} onChange={e => handle("phone", e.target.value)} />
-          </div>
+          <InternationalPhoneInput 
+            value={form.phone}
+            onChange={(fullNumber) => handle("phone", fullNumber)}
+            phoneError={phoneError}
+            setPhoneError={setPhoneError}
+            inputStyleClass="pl-2 focus:border-none focus:outline-none"
+          />
         </div>
       </div>
 
@@ -239,16 +283,34 @@ function FurnitureOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
   const [form, setForm] = useState({
     name: "", phone: "", type: "Dining Table", wood: "Teak", length: "", width: "", details: "",
   });
+  const [phoneError, setPhoneError] = useState('');
 
-  const handle = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }));
+  const handle = (k: string, v: string) => {
+    let val = v;
+    if (k === 'phone') {
+      val = val.replace(/[^0-9\s+\-()]/g, '');
+      const validation = validatePhoneNumber(val);
+      if (val) {
+        setPhoneError(validation.error || '');
+      } else {
+        setPhoneError('');
+      }
+    }
+    setForm(f => ({ ...f, [k]: val }));
+  };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    const validation = validatePhoneNumber(form.phone);
+    if (!validation.isValid) {
+      setPhoneError(validation.error || 'Please enter a valid phone number.');
+      return;
+    }
     const msg =
       `🪑 *HI WOOD – CUSTOM FURNITURE ORDER* 🪑\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
       `👤 *Name:* ${form.name}\n` +
-      `📞 *Phone:* ${form.phone}\n` +
+      `📞 *Phone:* ${validation.cleanedNumber}\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
       `🛋️ *Furniture Type:* ${form.type}\n` +
       `🪵 *Preferred Wood:* ${form.wood}\n` +
@@ -272,12 +334,15 @@ function FurnitureOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
             <input required className={`${inputCls} pl-9`} placeholder="Your name" value={form.name} onChange={e => handle("name", e.target.value)} />
           </div>
         </div>
-        <div>
+        <div className="flex flex-col justify-end">
           <label className={labelCls}>Phone</label>
-          <div className="relative">
-            <Phone size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
-            <input required className={`${inputCls} pl-9`} placeholder="+91 00000 00000" value={form.phone} onChange={e => handle("phone", e.target.value)} />
-          </div>
+          <InternationalPhoneInput 
+            value={form.phone}
+            onChange={(fullNumber) => handle("phone", fullNumber)}
+            phoneError={phoneError}
+            setPhoneError={setPhoneError}
+            inputStyleClass="pl-2 focus:border-none focus:outline-none"
+          />
         </div>
       </div>
 

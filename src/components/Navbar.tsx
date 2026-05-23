@@ -77,12 +77,12 @@ const Navbar = () => {
         return (
           <div className="w-[600px] bg-white rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.15)] p-10 grid grid-cols-2 gap-x-12 gap-y-8 border border-black/5 backdrop-blur-3xl">
             {[
-              { name: 'Dining Sets', cat: 'Dining', count: '12 Items' },
-              { name: 'Bedroom Furniture', cat: 'Bedroom', count: '08 Items' },
-              { name: 'Office Desks', cat: 'Office', count: '05 Items' },
-              { name: 'Living Room', cat: 'Living', count: '15 Items' },
-              { name: 'Storage Solutions', cat: 'Storage', count: '10 Items' },
-              { name: 'Artisan Seating', cat: 'Seating', count: '07 Items' }
+              { name: 'Dining Sets', cat: 'Dining', count: '04 Items' },
+              { name: 'Bedroom Furniture', cat: 'Bedroom', count: '04 Items' },
+              { name: 'Office Desks', cat: 'Office', count: '02 Items' },
+              { name: 'Living Room', cat: 'Living', count: '03 Items' },
+              { name: 'Storage Solutions', cat: 'Storage', count: '02 Items' },
+              { name: 'Artisan Seating', cat: 'Seating', count: '02 Items' }
             ].map((cat) => (
               <Link key={cat.name} href={`/catalog?category=${cat.cat}`} className="group/item flex flex-col gap-1">
                 <span className="text-[11px] font-black uppercase tracking-widest text-neutral-900 group-hover/item:text-primary transition-colors">

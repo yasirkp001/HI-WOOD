@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Phone, MapPin, Mail, Send } from 'lucide-react';
+import { Phone, MapPin, Mail, Send, User } from 'lucide-react';
 import Link from 'next/link';
+import { validatePhoneNumber } from '@/utils/phoneValidation';
+import InternationalPhoneInput from '@/components/InternationalPhoneInput';
 
 export default function ContactClient() {
   const [formData, setFormData] = useState({
@@ -12,20 +14,36 @@ export default function ContactClient() {
     subject: '',
     message: ''
   });
+  const [phoneError, setPhoneError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    let { name, value } = e.target;
+    if (name === 'phone') {
+      value = value.replace(/[^0-9\s+\-()]/g, '');
+      const validation = validatePhoneNumber(value);
+      if (value) {
+        setPhoneError(validation.error || '');
+      } else {
+        setPhoneError('');
+      }
+    }
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const { name, phone, email, subject, message } = formData;
+    const validation = validatePhoneNumber(phone);
+    if (!validation.isValid) {
+      setPhoneError(validation.error || 'Please enter a valid phone number.');
+      return;
+    }
     const whatsappMessage = `🌲 *HI WOOD - NEW CONTACT* 🌲%0A` +
                             `━━━━━━━━━━━━━━━━━━━━%0A` +
                             `👋 *Hello HI WOOD Team,*%0A%0A` +
                             `I have a new inquiry from the contact page:%0A%0A` +
                             `👤 *Name:* ${name}%0A` +
-                            `📞 *Phone:* ${phone}%0A` +
+                            `📞 *Phone:* ${validation.cleanedNumber}%0A` +
                             `✉️ *Email:* ${email}%0A` +
                             `📂 *Subject:* ${subject}%0A` +
                             `💬 *Message:* ${message}%0A%0A` +
@@ -112,19 +130,16 @@ export default function ContactClient() {
                       required
                       className="w-full bg-transparent border-b border-gray-300 py-3 pl-8 focus:outline-none focus:border-sand transition-colors"
                     />
-                    <Mail size={16} className="absolute left-0 top-4 text-gray-400" />
+                    <User size={16} className="absolute left-0 top-4 text-gray-400" />
                   </div>
-                  <div className="relative">
-                    <input 
-                      type="tel" 
-                      name="phone"
-                      placeholder="Phone number"
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-transparent border-b border-gray-300 py-3 pl-8 focus:outline-none focus:border-sand transition-colors"
-                    />
-                    <Phone size={16} className="absolute left-0 top-4 text-gray-400" />
-                  </div>
+                  <InternationalPhoneInput 
+                    value={formData.phone}
+                    onChange={(fullNumber) => setFormData({ ...formData, phone: fullNumber })}
+                    phoneError={phoneError}
+                    setPhoneError={setPhoneError}
+                    isTransparent={true}
+                    inputStyleClass="pl-2 focus:border-none focus:outline-none"
+                  />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
