@@ -45,3 +45,11 @@ input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
   -webkit-text-fill-color: #171717 !important;
 }
+
+/* Force light color scheme and dark text color on form controls to prevent browser-forced dark-mode text inversions */
+input,
+select,
+textarea {
+  color-scheme: light !important;
+  color: #171717 !important;
+}
