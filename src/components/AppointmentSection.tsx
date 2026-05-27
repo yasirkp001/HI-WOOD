@@ -76,7 +76,7 @@ const AppointmentSection = () => {
       <div className="absolute inset-0 bg-black/20" />
 
       {/* Main Card */}
-      <div className="relative z-10 w-full max-w-3xl bg-white/95 border border-black/10 rounded-[40px] p-12 md:p-16 shadow-2xl">
+      <div className="relative z-10 w-full max-w-3xl bg-white/95 border border-black/10 rounded-[40px] p-12 md:p-16 shadow-2xl" style={{ colorScheme: 'light' }}>
         <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-12 tracking-tight uppercase [font-family:Montserrat,sans-serif]">
           MAKE AN <span className="text-accent">APPOINTMENT</span>
         </h2>
