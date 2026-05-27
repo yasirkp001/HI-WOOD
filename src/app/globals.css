@@ -43,12 +43,5 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
-  -webkit-text-fill-color: white !important;
-}
-
-.light-form input:-webkit-autofill,
-.light-form input:-webkit-autofill:hover,
-.light-form input:-webkit-autofill:focus,
-.light-form input:-webkit-autofill:active {
-  -webkit-text-fill-color: black !important;
+  -webkit-text-fill-color: #171717 !important;
 }
