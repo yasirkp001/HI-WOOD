@@ -129,16 +129,15 @@ export default function ContactClient() {
                       placeholder="Your name"
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent border-b border-gray-300 py-3 pl-8 focus:outline-none focus:border-sand transition-colors"
+                      className="w-full bg-white border border-gray-200 rounded-2xl pl-12 pr-6 py-4 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-all placeholder:text-neutral-400"
                     />
-                    <User size={16} className="absolute left-0 top-4 text-gray-400" />
+                    <User size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                   </div>
                   <InternationalPhoneInput 
                     value={formData.phone}
                     onChange={(fullNumber) => setFormData({ ...formData, phone: fullNumber })}
                     phoneError={phoneError}
                     setPhoneError={setPhoneError}
-                    isTransparent={true}
                     inputStyleClass="pl-2 focus:border-none focus:outline-none"
                   />
                 </div>
@@ -151,9 +150,9 @@ export default function ContactClient() {
                       placeholder="Your email"
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent border-b border-gray-300 py-3 pl-8 focus:outline-none focus:border-sand transition-colors"
+                      className="w-full bg-white border border-gray-200 rounded-2xl pl-12 pr-6 py-4 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-all placeholder:text-neutral-400"
                     />
-                    <Mail size={16} className="absolute left-0 top-4 text-gray-400" />
+                    <Mail size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                   </div>
                   <div className="relative">
                     <input 
@@ -162,9 +161,9 @@ export default function ContactClient() {
                       placeholder="Subject"
                       onChange={handleChange}
                       required
-                      className="w-full bg-transparent border-b border-gray-300 py-3 pl-8 focus:outline-none focus:border-sand transition-colors"
+                      className="w-full bg-white border border-gray-200 rounded-2xl pl-12 pr-6 py-4 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-all placeholder:text-neutral-400"
                     />
-                    <Send size={16} className="absolute left-0 top-4 text-gray-400" />
+                    <Send size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
                   </div>
                 </div>
 
@@ -175,7 +174,7 @@ export default function ContactClient() {
                     rows={4}
                     onChange={handleChange}
                     required
-                    className="w-full bg-transparent border-b border-gray-300 py-3 focus:outline-none focus:border-sand transition-colors resize-none"
+                    className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-all placeholder:text-neutral-400 resize-none"
                   ></textarea>
                 </div>
 

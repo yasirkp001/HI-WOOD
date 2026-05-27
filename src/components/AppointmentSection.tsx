@@ -81,58 +81,72 @@ const AppointmentSection = () => {
           MAKE AN <span className="text-accent">APPOINTMENT</span>
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-            <input 
-              type="text" 
-              name="firstName"
-              placeholder="First name" 
-              onChange={handleChange}
-              required
-              className="w-full bg-transparent border-b border-black/20 py-3 text-neutral-900 placeholder-gray-400 focus:outline-none focus:border-accent transition-colors"
-            />
-            <input 
-              type="text" 
-              name="lastName"
-              placeholder="Last name" 
-              onChange={handleChange}
-              required
-              className="w-full bg-transparent border-b border-black/20 py-3 text-neutral-900 placeholder-gray-400 focus:outline-none focus:border-accent transition-colors"
-            />
-            <input 
-              type="email" 
-              name="email"
-              placeholder="Email" 
-              onChange={handleChange}
-              required
-              className="w-full bg-transparent border-b border-black/20 py-3 text-neutral-900 placeholder-gray-400 focus:outline-none focus:border-accent transition-colors"
-            />
-            <InternationalPhoneInput 
-              value={formData.phone}
-              onChange={(fullNumber) => setFormData({ ...formData, phone: fullNumber })}
-              phoneError={phoneError}
-              setPhoneError={setPhoneError}
-              isTransparent={true}
-              inputStyleClass="pl-2 focus:border-none focus:outline-none"
-            />
+        <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="flex flex-col justify-end">
+              <label className="block text-[10px] font-black uppercase tracking-widest text-primary mb-1.5 ml-1">First Name</label>
+              <input 
+                type="text" 
+                name="firstName"
+                placeholder="First name" 
+                onChange={handleChange}
+                required
+                className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-4 py-3.5 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-colors placeholder:text-neutral-400"
+              />
+            </div>
+            <div className="flex flex-col justify-end">
+              <label className="block text-[10px] font-black uppercase tracking-widest text-primary mb-1.5 ml-1">Last Name</label>
+              <input 
+                type="text" 
+                name="lastName"
+                placeholder="Last name" 
+                onChange={handleChange}
+                required
+                className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-4 py-3.5 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-colors placeholder:text-neutral-400"
+              />
+            </div>
+            <div className="flex flex-col justify-end">
+              <label className="block text-[10px] font-black uppercase tracking-widest text-primary mb-1.5 ml-1">Email Address</label>
+              <input 
+                type="email" 
+                name="email"
+                placeholder="Email" 
+                onChange={handleChange}
+                required
+                className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-4 py-3.5 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-colors placeholder:text-neutral-400"
+              />
+            </div>
+            <div className="flex flex-col justify-end">
+              <label className="block text-[10px] font-black uppercase tracking-widest text-primary mb-1.5 ml-1">Phone Number</label>
+              <InternationalPhoneInput 
+                value={formData.phone}
+                onChange={(fullNumber) => setFormData({ ...formData, phone: fullNumber })}
+                phoneError={phoneError}
+                setPhoneError={setPhoneError}
+                inputStyleClass="pl-2 focus:border-none focus:outline-none"
+              />
+            </div>
           </div>
 
-          <div className="relative">
-            <select 
-              name="service"
-              onChange={handleChange}
-              required
-              className="w-full bg-transparent border-b border-black/20 py-3 text-neutral-900 appearance-none focus:outline-none focus:border-accent transition-colors"
-              defaultValue=""
-            >
-              <option value="" disabled className="bg-white">Select Service</option>
-              <option value="Custom Log Milling" className="bg-white">Custom Log Milling</option>
-              <option value="Kiln Drying" className="bg-white">Kiln Drying</option>
-              <option value="Logistics & Transportation" className="bg-white">Logistics & Transportation</option>
-              <option value="Timber Sales" className="bg-white">Timber Sales</option>
-              <option value="Processing" className="bg-white">Processing</option>
-            </select>
-            <ChevronDown size={18} className="absolute right-0 top-4 text-gray-500 pointer-events-none" />
+          <div>
+            <label className="block text-[10px] font-black uppercase tracking-widest text-primary mb-1.5 ml-1">Select Service</label>
+            <div className="relative">
+              <select 
+                name="service"
+                onChange={handleChange}
+                required
+                className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-4 py-3.5 text-sm text-neutral-900 appearance-none focus:outline-none focus:border-primary transition-colors cursor-pointer"
+                defaultValue=""
+              >
+                <option value="" disabled className="bg-white">Select Service</option>
+                <option value="Custom Log Milling" className="bg-white">Custom Log Milling</option>
+                <option value="Kiln Drying" className="bg-white">Kiln Drying</option>
+                <option value="Logistics & Transportation" className="bg-white">Logistics & Transportation</option>
+                <option value="Timber Sales" className="bg-white">Timber Sales</option>
+                <option value="Processing" className="bg-white">Processing</option>
+              </select>
+              <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
+            </div>
           </div>
 
           <div className="flex flex-col md:flex-row items-center gap-10 pt-6">
