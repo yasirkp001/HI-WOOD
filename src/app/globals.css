@@ -58,8 +58,22 @@ textarea:-webkit-autofill:active,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus,
-select:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s !important;
+select:-webkit-autofill:active,
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active,
+textarea:autofill,
+textarea:autofill:hover,
+textarea:autofill:focus,
+textarea:autofill:active,
+select:autofill,
+select:autofill:hover,
+select:autofill:focus,
+select:autofill:active {
   -webkit-text-fill-color: #000000 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  box-shadow: 0 0 0px 1000px #ffffff inset !important;
   color: #000000 !important;
+  background-color: #ffffff !important;
 }
