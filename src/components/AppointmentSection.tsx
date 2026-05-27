@@ -17,7 +17,8 @@ const AppointmentSection = () => {
   const [phoneError, setPhoneError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    let { name, value } = e.target;
+    const { name } = e.target;
+    let { value } = e.target;
     if (name === 'phone') {
       // Prevent letters and invalid characters immediately
       value = value.replace(/[^0-9\s+\-()]/g, '');

@@ -2,8 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowLeft, Home, MessageSquare } from 'lucide-react';
+
+import { Home, MessageSquare } from 'lucide-react';
 
 export default function NotFound() {
   return (

@@ -4,15 +4,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Globe, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
-
 interface Branch {
   city: string;
   area: string;
   phone: string;
   email: string;
   mapUrl: string;
-  image: string;
 }
 
 const branches: Branch[] = [
@@ -22,7 +19,6 @@ const branches: Branch[] = [
     phone: "+91 80866 87342", 
     email: "clt@hiwood.com",
     mapUrl: "https://www.google.com/maps/place/Hi+WOOD/@11.2484096,75.8507352,17z/data=!3m1!1b1!4m6!3m5!1s0x3ba65bdcfe024db3:0x2cd0887ca4e627a1!8m2!3d11.2484096!4d75.8507352!16s%2Fg%2F11f01p1y1n",
-    image: "/images/store.jpg"
   }
 ];
 
@@ -58,7 +54,7 @@ export default function StoreClient() {
       {/* Branches List */}
       <section className="py-32 bg-white text-neutral-900">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 gap-24">
+          <div className="max-w-4xl mx-auto w-full">
             {branches.map((branch, idx) => (
               <motion.div 
                 key={branch.city}
@@ -66,22 +62,10 @@ export default function StoreClient() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: idx * 0.1 }}
-                className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24"
+                className="w-full"
               >
-                {/* Branch Image */}
-                <div className="w-full lg:w-1/2 relative aspect-[4/3] rounded-[2.5rem] overflow-hidden border border-black/5 shadow-2xl">
-                  <Image 
-                    src={branch.image} 
-                    alt={branch.city} 
-                    fill 
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-700 hover:scale-105" 
-                  />
-                  <div className="absolute inset-0 bg-black/10"></div>
-                </div>
-
                 {/* Branch Details */}
-                <div className="w-full lg:w-1/2 space-y-10 bg-white/20 backdrop-blur-xl rounded-[2rem] border border-white/30 p-8 md:p-12 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+                <div className="w-full space-y-10 bg-white/20 backdrop-blur-xl rounded-[2.5rem] border border-black/5 p-8 md:p-12 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
                   <div>
                     <h3 className="text-[10px] font-bold tracking-[0.4em] uppercase text-primary mb-4">Experience Center</h3>
                     <h2 className="text-5xl md:text-6xl font-bold text-neutral-900 mb-6 tracking-tighter">{branch.city}</h2>

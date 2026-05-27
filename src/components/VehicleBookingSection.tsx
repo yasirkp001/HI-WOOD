@@ -203,7 +203,7 @@ const VehicleBookingSection = () => {
                           {vehicle.id === 1 ? "Max Length" : vehicle.id === 2 ? "Max Reach" : "Hook Height"}
                         </p>
                         <p className="text-neutral-900 font-bold">
-                          {(vehicle.specs as any).length || (vehicle.specs as any).width}
+                          {(vehicle.specs as { length?: string; width?: string }).length || (vehicle.specs as { length?: string; width?: string }).width}
                         </p>
                       </div>
                     </div>

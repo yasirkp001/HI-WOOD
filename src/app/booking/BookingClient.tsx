@@ -3,7 +3,7 @@
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, User, Mail, Phone, MessageSquare, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { Calendar, Clock, User, Mail, MessageSquare, ChevronRight, CheckCircle2 } from 'lucide-react';
 import { validatePhoneNumber } from '@/utils/phoneValidation';
 import InternationalPhoneInput from '@/components/InternationalPhoneInput';
 

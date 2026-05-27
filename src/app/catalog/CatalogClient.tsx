@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, ArrowRight, Star, Search, X } from 'lucide-react';
 import Image from 'next/image';
@@ -195,10 +195,6 @@ function CatalogContent() {
   const filteredItems = allFilteredItems.slice(0, visibleCount);
   const hasMore = visibleCount < allFilteredItems.length;
 
-  useEffect(() => {
-    setVisibleCount(6);
-  }, [activeCategory, searchQuery]);
-
   return (
     <div className="min-h-screen bg-white text-neutral-900 font-sans selection:bg-primary/30 pt-20">
       {/* Hero Section */}
@@ -253,12 +249,12 @@ function CatalogContent() {
                 type="text" 
                 placeholder="Search products..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => { setSearchQuery(e.target.value); setVisibleCount(6); }}
                 className="w-full bg-white border border-black/10 rounded-full pl-14 pr-6 py-4 text-sm outline-none focus:border-primary/50 focus:bg-neutral-50 transition-all text-neutral-900 shadow-sm"
               />
               {searchQuery && (
                 <button 
-                  onClick={() => setSearchQuery("")}
+                  onClick={() => { setSearchQuery(""); setVisibleCount(6); }}
                   className="absolute right-6 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-neutral-900"
                 >
                   <X size={16} />
@@ -348,9 +344,9 @@ function CatalogContent() {
                 <Search size={32} className="text-gray-600" />
               </div>
               <h3 className="text-2xl font-black uppercase tracking-tight mb-4">No Products Found</h3>
-              <p className="text-neutral-500 max-w-xs mx-auto mb-10">We couldn't find any products matching your search or category choice.</p>
+              <p className="text-neutral-500 max-w-xs mx-auto mb-10">We couldn&apos;t find any products matching your search or category choice.</p>
               <button 
-                onClick={() => { setActiveCategory("All"); setSearchQuery(""); }}
+                onClick={() => { setActiveCategory("All"); setSearchQuery(""); setVisibleCount(6); }}
                 className="px-8 py-4 bg-primary text-white rounded-full text-[10px] font-black uppercase tracking-widest hover:brightness-110 transition-all"
               >
                 Clear All Filters
@@ -376,7 +372,7 @@ function CatalogContent() {
         <div className="container mx-auto px-8 text-center">
           <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">HAVE A CUSTOM DESIGN?</h2>
           <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto mb-12">
-            If you have a specific design in mind that isn't in our catalog, we can build it for you. Send us your requirements or sketches.
+            If you have a specific design in mind that isn&apos;t in our catalog, we can build it for you. Send us your requirements or sketches.
           </p>
           <Link href="/contact" className="inline-flex items-center gap-4 px-12 py-6 bg-primary text-white rounded-full text-[11px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-500 shadow-2xl">
             Request Custom Build <ArrowRight size={18} />

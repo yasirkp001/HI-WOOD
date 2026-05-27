@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { validatePhoneNumber } from "@/utils/phoneValidation";
 
 interface Country {
@@ -59,13 +59,14 @@ export default function InternationalPhoneInput({
   const [selectedCountry, setSelectedCountry] = useState<Country>(getInitialCountry());
   const [localNumber, setLocalNumber] = useState("");
 
-  // Update local input number when full value changes from parent
-  useEffect(() => {
+  const [prevValue, setPrevValue] = useState(value);
+
+  if (value !== prevValue) {
+    setPrevValue(value);
     if (value.startsWith(selectedCountry.dialCode)) {
       const remainder = value.slice(selectedCountry.dialCode.length).trim();
       setLocalNumber(remainder);
     } else {
-      // Find matching country if full value was set directly
       const matchingCountry = COUNTRIES.find((c) => value.startsWith(c.dialCode));
       if (matchingCountry) {
         setSelectedCountry(matchingCountry);
@@ -74,7 +75,7 @@ export default function InternationalPhoneInput({
         setLocalNumber(value);
       }
     }
-  }, [value, selectedCountry.dialCode]);
+  }
 
   const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const country = COUNTRIES.find((c) => c.code === e.target.value);

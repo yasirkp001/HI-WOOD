@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, X, ChevronRight, Droplets, Settings, ShoppingCart } from 'lucide-react';
+import { ArrowRight, ChevronRight, Droplets, Settings, ShoppingCart } from 'lucide-react';
 import VehicleBookingSection from '@/components/VehicleBookingSection';
 import OrderModal from '@/components/OrderModal';
 import { motion } from 'framer-motion';
-import { serviceData, Vehicle, ServiceFeature, ServiceSpec, WorkflowStep } from '@/data/serviceData';
+import { serviceData, ServiceFeature, ServiceSpec, WorkflowStep } from '@/data/serviceData';
 
 interface ServiceDetailClientProps {
   id: string;

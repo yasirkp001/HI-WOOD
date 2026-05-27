@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, User, Phone, MapPin, Package, Truck, Layers, CheckCircle2 } from "lucide-react";
+import { X, User, MapPin, Package, Truck, Layers, CheckCircle2 } from "lucide-react";
 import { validatePhoneNumber } from "../utils/phoneValidation";
 import InternationalPhoneInput from "./InternationalPhoneInput";
 
@@ -407,11 +407,13 @@ export default function OrderModal({ isOpen, onClose, serviceType }: OrderModalP
   const meta = SERVICE_META[serviceType];
   const [submitted, setSubmitted] = useState(false);
   const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "918086687342";
-
-  // Reset on open
-  useEffect(() => {
-    if (isOpen) setSubmitted(false);
-  }, [isOpen]);
+  const [prevIsOpen, setPrevIsOpen] = useState(isOpen);
+  if (isOpen !== prevIsOpen) {
+    setPrevIsOpen(isOpen);
+    if (isOpen) {
+      setSubmitted(false);
+    }
+  }
 
   // Lock body scroll
   useEffect(() => {

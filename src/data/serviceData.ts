@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Settings, Droplets, Clock, Truck, MapPin, CheckCircle } from 'lucide-react';
+import { Shield, Settings, Droplets, Clock, Truck, MapPin } from 'lucide-react';
 
 export interface ServiceFeature {
   icon: React.ElementType;

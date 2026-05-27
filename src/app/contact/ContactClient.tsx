@@ -17,7 +17,8 @@ export default function ContactClient() {
   const [phoneError, setPhoneError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    let { name, value } = e.target;
+    const { name } = e.target;
+    let { value } = e.target;
     if (name === 'phone') {
       value = value.replace(/[^0-9\s+\-()]/g, '');
       const validation = validatePhoneNumber(value);
