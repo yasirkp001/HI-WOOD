@@ -1,6 +1,47 @@
 import { NextResponse } from 'next/server';
 
+// Simple in-memory cache for IP-based rate limiting
+const ipCache = new Map<string, { count: number; lastReset: number }>();
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 10; // Max 10 requests per minute
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const userData = ipCache.get(ip);
+
+  if (!userData) {
+    ipCache.set(ip, { count: 1, lastReset: now });
+    return false;
+  }
+
+  if (now - userData.lastReset > RATE_LIMIT_WINDOW) {
+    ipCache.set(ip, { count: 1, lastReset: now });
+    return false;
+  }
+
+  if (userData.count >= MAX_REQUESTS_PER_WINDOW) {
+    return true;
+  }
+
+  userData.count += 1;
+  return false;
+}
+
 export async function GET(request: Request) {
+  // Get IP address from headers
+  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || '127.0.0.1';
+
+  // Apply rate limiting
+  if (isRateLimited(ip)) {
+    console.warn(`Rate limit exceeded for IP: ${ip}`);
+    return new NextResponse('Too many requests. Please try again in a minute.', { 
+      status: 429,
+      headers: {
+        'Retry-After': '60',
+      }
+    });
+  }
+
   const { searchParams } = new URL(request.url);
   const prompt = searchParams.get('prompt');
 

@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone, MapPin, Mail, Send, User } from 'lucide-react';
 import Link from 'next/link';
 import { validatePhoneNumber } from '@/utils/phoneValidation';
 import InternationalPhoneInput from '@/components/InternationalPhoneInput';
+import { getUserDataFromCookies, saveUserDataToCookies } from '@/utils/cookieUtils';
 
 export default function ContactClient() {
   const [formData, setFormData] = useState({
@@ -15,6 +16,17 @@ export default function ContactClient() {
     message: ''
   });
   const [phoneError, setPhoneError] = useState('');
+
+  // Prefill contact details from cookies if accepted
+  useEffect(() => {
+    const data = getUserDataFromCookies();
+    setFormData(prev => ({
+      ...prev,
+      name: data.name || prev.name,
+      email: data.email || prev.email,
+      phone: data.phone || prev.phone
+    }));
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name } = e.target;
@@ -34,11 +46,34 @@ export default function ContactClient() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const { name, phone, email, subject, message } = formData;
+
+    // Advanced Name Validation
+    if (name.trim().length < 3) {
+      alert("Name must be at least 3 characters long.");
+      return;
+    }
+    const nameRegex = /^[a-zA-Z\s.]+$/;
+    if (!nameRegex.test(name)) {
+      alert("Name must contain only alphabetic characters, spaces or periods.");
+      return;
+    }
+
+    // Advanced Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
     const validation = validatePhoneNumber(phone);
     if (!validation.isValid) {
       setPhoneError(validation.error || 'Please enter a valid phone number.');
       return;
     }
+
+    // Save details to cookies if consent allowed
+    saveUserDataToCookies(name, phone, email);
+
     const whatsappMessage = `🌲 *HI WOOD - NEW CONTACT* 🌲%0A` +
                             `━━━━━━━━━━━━━━━━━━━━%0A` +
                             `👋 *Hello HI WOOD Team,*%0A%0A` +
@@ -127,6 +162,7 @@ export default function ContactClient() {
                       type="text" 
                       name="name"
                       placeholder="Your name"
+                      value={formData.name}
                       onChange={handleChange}
                       required
                       className="w-full bg-white border border-gray-200 rounded-2xl pl-12 pr-6 py-4 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-all placeholder:text-neutral-400"
@@ -148,6 +184,7 @@ export default function ContactClient() {
                       type="email" 
                       name="email"
                       placeholder="Your email"
+                      value={formData.email}
                       onChange={handleChange}
                       required
                       className="w-full bg-white border border-gray-200 rounded-2xl pl-12 pr-6 py-4 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-all placeholder:text-neutral-400"
@@ -159,6 +196,7 @@ export default function ContactClient() {
                       type="text" 
                       name="subject"
                       placeholder="Subject"
+                      value={formData.subject}
                       onChange={handleChange}
                       required
                       className="w-full bg-white border border-gray-200 rounded-2xl pl-12 pr-6 py-4 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-all placeholder:text-neutral-400"
@@ -172,6 +210,7 @@ export default function ContactClient() {
                   <textarea 
                     name="message"
                     rows={4}
+                    value={formData.message}
                     onChange={handleChange}
                     required
                     className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-all placeholder:text-neutral-400 resize-none"

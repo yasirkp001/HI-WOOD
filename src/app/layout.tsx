@@ -84,6 +84,7 @@ export const metadata: Metadata = {
 
 import Navbar from "@/components/Navbar";
 import ScrollToTop from "@/components/ScrollToTop";
+import CookieConsent from "@/components/CookieConsent";
 
 export default function RootLayout({
   children,
@@ -97,6 +98,7 @@ export default function RootLayout({
       >
         <Navbar />
         <ScrollToTop />
+        <CookieConsent />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

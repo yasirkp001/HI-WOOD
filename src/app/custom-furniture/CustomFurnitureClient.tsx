@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { validatePhoneNumber } from '@/utils/phoneValidation';
 import InternationalPhoneInput from '@/components/InternationalPhoneInput';
+import { getUserDataFromCookies, saveUserDataToCookies } from '@/utils/cookieUtils';
 
 import dynamic from 'next/dynamic';
 const PopularFurniture = dynamic(() => import('@/components/PopularFurniture'), {
@@ -29,8 +30,16 @@ export default function CustomFurnitureClient() {
   const [selectedWood, setSelectedWood] = React.useState(woodPaletteData[0]);
   const [length, setLength] = React.useState<number>(6);
   const [width, setWidth] = React.useState<number>(3);
+  const [cfName, setCfName] = React.useState('');
   const [cfPhone, setCfPhone] = React.useState('');
   const [cfPhoneError, setCfPhoneError] = React.useState('');
+
+  // Prefill details from cookies if accepted
+  React.useEffect(() => {
+    const data = getUserDataFromCookies();
+    if (data.name) setCfName(data.name);
+    if (data.phone) setCfPhone(data.phone);
+  }, []);
 
   const sqFt = length * width;
   const estimatedCost = sqFt * selectedWood.pricePerSqFt;
@@ -503,7 +512,22 @@ export default function CustomFurnitureClient() {
                       return;
                     }
                     const formData = new FormData(e.currentTarget);
-                    const name = formData.get('name');
+                    const name = formData.get('name') as string;
+
+                    // Advanced Name Validation
+                    if (name.trim().length < 3) {
+                      alert("Name must be at least 3 characters long.");
+                      return;
+                    }
+                    const nameRegex = /^[a-zA-Z\s.]+$/;
+                    if (!nameRegex.test(name)) {
+                      alert("Name must contain only alphabetic characters, spaces or periods.");
+                      return;
+                    }
+
+                    // Save details to cookies if consent allowed
+                    saveUserDataToCookies(name, cfPhone);
+
                     const type = formData.get('type');
                     const message = formData.get('message');
                     const wpMsg = `Hi Hi Wood! I'm requesting a quote.\n\nName: ${name}\nPhone: ${validation.cleanedNumber}\nFurniture Type: ${type}\nRequirements: ${message}`;
@@ -513,7 +537,7 @@ export default function CustomFurnitureClient() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-[9px] font-black uppercase tracking-widest text-neutral-500">Full Name</label>
-                      <input name="name" type="text" required className="w-full bg-white border border-black/5 rounded-2xl px-6 py-4 text-sm outline-none focus:border-primary/50 transition-all text-neutral-900" placeholder="John Doe" />
+                      <input name="name" type="text" value={cfName} onChange={(e) => setCfName(e.target.value)} required className="w-full bg-white border border-black/5 rounded-2xl px-6 py-4 text-sm outline-none focus:border-primary/50 transition-all text-neutral-900" placeholder="John Doe" />
                     </div>
                     <div className="space-y-2 flex flex-col justify-end">
                       <label className="text-[9px] font-black uppercase tracking-widest text-neutral-500">Phone Number</label>

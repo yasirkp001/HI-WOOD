@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Phone, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import { validatePhoneNumber } from '../utils/phoneValidation';
 import InternationalPhoneInput from './InternationalPhoneInput';
+import { getUserDataFromCookies, saveUserDataToCookies } from '../utils/cookieUtils';
 
 const AppointmentSection = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +16,29 @@ const AppointmentSection = () => {
     service: ''
   });
   const [phoneError, setPhoneError] = useState('');
+
+  // Prefill user details from cookies if accepted
+  useEffect(() => {
+    const data = getUserDataFromCookies();
+    if (data.name) {
+      const parts = data.name.trim().split(/\s+/);
+      const first = parts[0] || '';
+      const last = parts.slice(1).join(' ') || '';
+      setFormData(prev => ({
+        ...prev,
+        firstName: first,
+        lastName: last,
+        email: data.email || prev.email,
+        phone: data.phone || prev.phone
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        email: data.email || prev.email,
+        phone: data.phone || prev.phone
+      }));
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name } = e.target;
@@ -36,11 +60,32 @@ const AppointmentSection = () => {
     e.preventDefault();
     const { firstName, lastName, email, phone, service } = formData;
     
+    // Advanced Name Validation
+    if (firstName.trim().length < 2 || lastName.trim().length < 1) {
+      alert("Please enter a valid first and last name.");
+      return;
+    }
+    const nameRegex = /^[a-zA-Z\s.]+$/;
+    if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+      alert("Names must only contain alphabetic characters, spaces or periods.");
+      return;
+    }
+
+    // Advanced Email Validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
     const validation = validatePhoneNumber(phone);
     if (!validation.isValid) {
       setPhoneError(validation.error || 'Please enter a valid phone number.');
       return;
     }
+
+    // Save to cookies if consent allowed
+    saveUserDataToCookies(`${firstName} ${lastName}`, phone, email);
     
     const message = `🌲 *HI WOOD - NEW APPOINTMENT* 🌲%0A` +
                     `━━━━━━━━━━━━━━━━━━━━%0A` +
@@ -89,6 +134,7 @@ const AppointmentSection = () => {
                 type="text" 
                 name="firstName"
                 placeholder="First name" 
+                value={formData.firstName}
                 onChange={handleChange}
                 required
                 className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-4 py-3.5 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-colors placeholder:text-neutral-400"
@@ -100,6 +146,7 @@ const AppointmentSection = () => {
                 type="text" 
                 name="lastName"
                 placeholder="Last name" 
+                value={formData.lastName}
                 onChange={handleChange}
                 required
                 className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-4 py-3.5 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-colors placeholder:text-neutral-400"
@@ -111,6 +158,7 @@ const AppointmentSection = () => {
                 type="email" 
                 name="email"
                 placeholder="Email" 
+                value={formData.email}
                 onChange={handleChange}
                 required
                 className="w-full bg-neutral-50 border border-neutral-200 rounded-2xl px-4 py-3.5 text-sm text-neutral-900 focus:outline-none focus:border-primary transition-colors placeholder:text-neutral-400"

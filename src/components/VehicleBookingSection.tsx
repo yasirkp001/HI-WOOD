@@ -78,6 +78,23 @@ const VehicleBookingSection = () => {
   const confirmBooking = () => {
     if (!selectedVehicle) return;
 
+    // Advanced Validation
+    const tonsVal = Number(bookingDetails.tons);
+    if (!bookingDetails.tons || isNaN(tonsVal) || tonsVal <= 0) {
+      alert("Please enter a valid positive number of tons.");
+      return;
+    }
+
+    if (selectedVehicle.showWheels && !bookingDetails.wheels) {
+      alert("Please select the number of wheels required for transportation.");
+      return;
+    }
+
+    if (!bookingDetails.destination || bookingDetails.destination.trim() === "") {
+      alert("Please specify the destination location.");
+      return;
+    }
+
     const message = `🌲 *HI WOOD - PREMIUM VEHICLE BOOKING* 🌲%0A` +
       `━━━━━━━━━━━━━━━━━━━━%0A` +
       `👋 *Hello HI WOOD Logistics,*%0A%0A` +
@@ -86,11 +103,11 @@ const VehicleBookingSection = () => {
       `📦 *TYPE:* ${selectedVehicle.type}%0A` +
       `⚖️ *BASE CAPACITY:* ${selectedVehicle.capacity}%0A%0A` +
       `*MY REQUIREMENTS:*%0A` +
-      `🔹 *Required Tons:* ${bookingDetails.tons || 'Not specified'}%0A` +
+      `🔹 *Required Tons:* ${bookingDetails.tons}%0A` +
       (selectedVehicle.showWheels 
-        ? `🔹 *Wheels Required:* ${bookingDetails.wheels || 'Not specified'}%0A` 
+        ? `🔹 *Wheels Required:* ${bookingDetails.wheels}%0A` 
         : '') +
-      `🔹 *Destination:* ${bookingDetails.destination || 'Not specified'}%0A%0A` +
+      `🔹 *Destination:* ${bookingDetails.destination.trim()}%0A%0A` +
       `Please confirm availability for my project.%0A` +
       `━━━━━━━━━━━━━━━━━━━━%0A` +
       `🌐 _Sent via hiwood.com_`;

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, User, MapPin, Package, Truck, Layers, CheckCircle2 } from "lucide-react";
 import { validatePhoneNumber } from "../utils/phoneValidation";
 import InternationalPhoneInput from "./InternationalPhoneInput";
+import { getUserDataFromCookies, saveUserDataToCookies } from "../utils/cookieUtils";
 
 export type OrderServiceType = "mills" | "transportation" | "custom-furniture";
 
@@ -45,6 +46,16 @@ function MillsOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
   });
   const [phoneError, setPhoneError] = useState('');
 
+  // Prefill details from cookies if accepted
+  useEffect(() => {
+    const data = getUserDataFromCookies();
+    setForm(f => ({
+      ...f,
+      name: data.name || f.name,
+      phone: data.phone || f.phone
+    }));
+  }, []);
+
   const handle = (k: string, v: string) => {
     let val = v;
     if (k === 'phone') {
@@ -61,11 +72,33 @@ function MillsOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Advanced Name Validation
+    if (form.name.trim().length < 3) {
+      alert("Name must be at least 3 characters long.");
+      return;
+    }
+    const nameRegex = /^[a-zA-Z\s.]+$/;
+    if (!nameRegex.test(form.name)) {
+      alert("Name must contain only alphabetic characters, spaces or periods.");
+      return;
+    }
+
+    // Advanced Numerical Checks
+    if (Number(form.length) <= 0 || Number(form.width) <= 0 || Number(form.thickness) <= 0 || Number(form.qty) <= 0) {
+      alert("Dimensions (length, width, thickness) and quantity must be positive numbers greater than zero.");
+      return;
+    }
+
     const validation = validatePhoneNumber(form.phone);
     if (!validation.isValid) {
       setPhoneError(validation.error || 'Please enter a valid phone number.');
       return;
     }
+
+    // Save details to cookies if consent allowed
+    saveUserDataToCookies(form.name, form.phone);
+
     const msg =
       `🌲 *HI WOOD – MILLS ORDER* 🌲\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
@@ -165,6 +198,16 @@ function TransportOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
   });
   const [phoneError, setPhoneError] = useState('');
 
+  // Prefill details from cookies if accepted
+  useEffect(() => {
+    const data = getUserDataFromCookies();
+    setForm(f => ({
+      ...f,
+      name: data.name || f.name,
+      phone: data.phone || f.phone
+    }));
+  }, []);
+
   const handle = (k: string, v: string) => {
     let val = v;
     if (k === 'phone') {
@@ -181,11 +224,33 @@ function TransportOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Advanced Name Validation
+    if (form.name.trim().length < 3) {
+      alert("Name must be at least 3 characters long.");
+      return;
+    }
+    const nameRegex = /^[a-zA-Z\s.]+$/;
+    if (!nameRegex.test(form.name)) {
+      alert("Name must contain only alphabetic characters, spaces or periods.");
+      return;
+    }
+
+    // Advanced Numerical Checks
+    if (Number(form.weight) <= 0) {
+      alert("Estimated weight must be a positive number greater than zero.");
+      return;
+    }
+
     const validation = validatePhoneNumber(form.phone);
     if (!validation.isValid) {
       setPhoneError(validation.error || 'Please enter a valid phone number.');
       return;
     }
+
+    // Save details to cookies if consent allowed
+    saveUserDataToCookies(form.name, form.phone);
+
     const msg =
       `🚛 *HI WOOD – TRANSPORT ORDER* 🚛\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
@@ -285,6 +350,16 @@ function FurnitureOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
   });
   const [phoneError, setPhoneError] = useState('');
 
+  // Prefill details from cookies if accepted
+  useEffect(() => {
+    const data = getUserDataFromCookies();
+    setForm(f => ({
+      ...f,
+      name: data.name || f.name,
+      phone: data.phone || f.phone
+    }));
+  }, []);
+
   const handle = (k: string, v: string) => {
     let val = v;
     if (k === 'phone') {
@@ -301,11 +376,37 @@ function FurnitureOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Advanced Name Validation
+    if (form.name.trim().length < 3) {
+      alert("Name must be at least 3 characters long.");
+      return;
+    }
+    const nameRegex = /^[a-zA-Z\s.]+$/;
+    if (!nameRegex.test(form.name)) {
+      alert("Name must contain only alphabetic characters, spaces or periods.");
+      return;
+    }
+
+    // Advanced Numerical Checks
+    if (form.length && Number(form.length) <= 0) {
+      alert("Length must be a positive number greater than zero.");
+      return;
+    }
+    if (form.width && Number(form.width) <= 0) {
+      alert("Width must be a positive number greater than zero.");
+      return;
+    }
+
     const validation = validatePhoneNumber(form.phone);
     if (!validation.isValid) {
       setPhoneError(validation.error || 'Please enter a valid phone number.');
       return;
     }
+
+    // Save details to cookies if consent allowed
+    saveUserDataToCookies(form.name, form.phone);
+
     const msg =
       `🪑 *HI WOOD – CUSTOM FURNITURE ORDER* 🪑\n` +
       `━━━━━━━━━━━━━━━━━━━━\n` +
