@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
 @import "tailwindcss";
 
 /* Design tokens */
@@ -12,8 +13,9 @@
   --color-primary: #00A651;
   --color-accent: #E31E24;
 
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui;
-  --font-serif: var(--font-montserrat), ui-serif, Georgia;
+  --font-sans: 'Manrope', ui-sans-serif, system-ui;
+  --font-serif: 'Montserrat', ui-serif, Georgia;
+  --font-playfair: 'Playfair Display', ui-serif, Georgia;
 }
 
 /* Tailwind base layer with dark mode variables */
