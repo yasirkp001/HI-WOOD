@@ -3,28 +3,30 @@
 import React, { useState, useEffect } from "react";
 import { ShieldCheck, Cookie, X, Check } from "lucide-react";
 import { getCookie, setCookie } from "@/utils/cookieUtils";
+import { usePathname } from "next/navigation";
 
 export default function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    console.log("🍪 CookieConsent: Component mounted.");
+    console.log("🍪 CookieConsent: Pathname changed to:", pathname);
     const consent = getCookie("hiwood_cookie_consent");
-    console.log("🍪 CookieConsent: Read consent value is:", consent);
+    const targetPages = ["/contact", "/booking", "/custom-furniture"];
     
-    if (!consent) {
-      console.log("🍪 CookieConsent: No consent found. Displaying banner.");
+    if (targetPages.includes(pathname) && !consent) {
+      console.log("🍪 CookieConsent: No consent found on form page. Displaying banner.");
       setIsRendered(true);
-      // Tiny delay to trigger CSS transition
       const timer = setTimeout(() => {
         setIsVisible(true);
       }, 50);
       return () => clearTimeout(timer);
     } else {
-      console.log("🍪 CookieConsent: Consent already set to:", consent);
+      setIsVisible(false);
+      setIsRendered(false);
     }
-  }, []);
+  }, [pathname]);
 
   const handleAccept = () => {
     setCookie("hiwood_cookie_consent", "accepted", 365);
