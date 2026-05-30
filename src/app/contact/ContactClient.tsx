@@ -74,6 +74,26 @@ export default function ContactClient() {
     // Save details to cookies if consent allowed
     saveUserDataToCookies(name, phone, email);
 
+    // Dispatch background server-side secure email notification
+    fetch('/api/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name,
+        phone: validation.cleanedNumber,
+        email,
+        subject,
+        message,
+      }),
+    })
+    .then((res) => {
+      if (!res.ok) console.error('Background email dispatch failed');
+      else console.log('Background email dispatch succeeded');
+    })
+    .catch((err) => console.error('Error during background email dispatch:', err));
+
     const whatsappMessage = `🌲 *HI WOOD - NEW CONTACT* 🌲%0A` +
                             `━━━━━━━━━━━━━━━━━━━━%0A` +
                             `👋 *Hello HI WOOD Team,*%0A%0A` +
