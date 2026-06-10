@@ -10,22 +10,19 @@ export default function CookieConsent() {
   const [isRendered, setIsRendered] = useState(false);
   const pathname = usePathname();
 
+  // Banner visibility is resolved in deferred tasks so the update lands after
+  // hydration instead of cascading a sync re-render on every navigation.
   useEffect(() => {
-    console.log("🍪 CookieConsent: Pathname changed to:", pathname);
     const consent = getCookie("hiwood_cookie_consent");
     const targetPages = ["/contact", "/booking", "/custom-furniture"];
-    
-    if (targetPages.includes(pathname) && !consent) {
-      console.log("🍪 CookieConsent: No consent found on form page. Displaying banner.");
-      setIsRendered(true);
-      const timer = setTimeout(() => {
-        setIsVisible(true);
-      }, 50);
-      return () => clearTimeout(timer);
-    } else {
-      setIsVisible(false);
-      setIsRendered(false);
-    }
+    const shouldShow = targetPages.includes(pathname) && !consent;
+
+    const renderTimer = setTimeout(() => setIsRendered(shouldShow), 0);
+    const visibleTimer = setTimeout(() => setIsVisible(shouldShow), 50);
+    return () => {
+      clearTimeout(renderTimer);
+      clearTimeout(visibleTimer);
+    };
   }, [pathname]);
 
   const handleAccept = () => {

@@ -17,15 +17,20 @@ export default function ContactClient() {
   });
   const [phoneError, setPhoneError] = useState('');
 
-  // Prefill contact details from cookies if accepted
+  // Prefill contact details from cookies if accepted.
+  // Deferred to a task so the update lands after hydration instead of cascading a sync re-render.
   useEffect(() => {
-    const data = getUserDataFromCookies();
-    setFormData(prev => ({
-      ...prev,
-      name: data.name || prev.name,
-      email: data.email || prev.email,
-      phone: data.phone || prev.phone
-    }));
+    const timer = setTimeout(() => {
+      const data = getUserDataFromCookies();
+      if (!data.name && !data.email && !data.phone) return;
+      setFormData(prev => ({
+        ...prev,
+        name: data.name || prev.name,
+        email: data.email || prev.email,
+        phone: data.phone || prev.phone
+      }));
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -43,7 +48,7 @@ export default function ContactClient() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { name, phone, email, subject, message } = formData;
 
@@ -141,7 +146,7 @@ export default function ContactClient() {
             <div>
               <p className="text-sand font-bold text-xs tracking-[0.3em] uppercase mb-4">Contact Form</p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight mb-8 [font-family:Montserrat,sans-serif]">
-                HAVE A QUESTIONS? <br /> CONTACT US NOW
+                HAVE A QUESTION? <br /> CONTACT US NOW
               </h2>
               <p className="text-gray-500 leading-relaxed max-w-md">
                 Our team is ready to help you with your timber requirements. Whether you need custom log milling or bulk supply, we are just a message away.

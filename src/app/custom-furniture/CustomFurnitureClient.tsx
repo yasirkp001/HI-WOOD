@@ -34,11 +34,15 @@ export default function CustomFurnitureClient() {
   const [cfPhone, setCfPhone] = React.useState('');
   const [cfPhoneError, setCfPhoneError] = React.useState('');
 
-  // Prefill details from cookies if accepted
+  // Prefill details from cookies if accepted.
+  // Deferred to a task so the update lands after hydration instead of cascading a sync re-render.
   React.useEffect(() => {
-    const data = getUserDataFromCookies();
-    if (data.name) setCfName(data.name);
-    if (data.phone) setCfPhone(data.phone);
+    const timer = setTimeout(() => {
+      const data = getUserDataFromCookies();
+      if (data.name) setCfName(data.name);
+      if (data.phone) setCfPhone(data.phone);
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const sqFt = length * width;

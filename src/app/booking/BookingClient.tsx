@@ -14,7 +14,7 @@ function BookingForm() {
   const [phone, setPhone] = React.useState('');
   const [phoneError, setPhoneError] = React.useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const validation = validatePhoneNumber(phone);
     if (!validation.isValid) {

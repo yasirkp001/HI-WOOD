@@ -46,14 +46,19 @@ function MillsOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
   });
   const [phoneError, setPhoneError] = useState('');
 
-  // Prefill details from cookies if accepted
+  // Prefill details from cookies if accepted.
+  // Deferred to a task so the update lands after hydration instead of cascading a sync re-render.
   useEffect(() => {
-    const data = getUserDataFromCookies();
-    setForm(f => ({
-      ...f,
-      name: data.name || f.name,
-      phone: data.phone || f.phone
-    }));
+    const timer = setTimeout(() => {
+      const data = getUserDataFromCookies();
+      if (!data.name && !data.phone) return;
+      setForm(f => ({
+        ...f,
+        name: data.name || f.name,
+        phone: data.phone || f.phone
+      }));
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const handle = (k: string, v: string) => {
@@ -70,7 +75,7 @@ function MillsOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
     setForm(f => ({ ...f, [k]: val }));
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Advanced Name Validation
@@ -198,14 +203,19 @@ function TransportOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
   });
   const [phoneError, setPhoneError] = useState('');
 
-  // Prefill details from cookies if accepted
+  // Prefill details from cookies if accepted.
+  // Deferred to a task so the update lands after hydration instead of cascading a sync re-render.
   useEffect(() => {
-    const data = getUserDataFromCookies();
-    setForm(f => ({
-      ...f,
-      name: data.name || f.name,
-      phone: data.phone || f.phone
-    }));
+    const timer = setTimeout(() => {
+      const data = getUserDataFromCookies();
+      if (!data.name && !data.phone) return;
+      setForm(f => ({
+        ...f,
+        name: data.name || f.name,
+        phone: data.phone || f.phone
+      }));
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const handle = (k: string, v: string) => {
@@ -222,7 +232,7 @@ function TransportOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
     setForm(f => ({ ...f, [k]: val }));
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Advanced Name Validation
@@ -350,14 +360,19 @@ function FurnitureOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
   });
   const [phoneError, setPhoneError] = useState('');
 
-  // Prefill details from cookies if accepted
+  // Prefill details from cookies if accepted.
+  // Deferred to a task so the update lands after hydration instead of cascading a sync re-render.
   useEffect(() => {
-    const data = getUserDataFromCookies();
-    setForm(f => ({
-      ...f,
-      name: data.name || f.name,
-      phone: data.phone || f.phone
-    }));
+    const timer = setTimeout(() => {
+      const data = getUserDataFromCookies();
+      if (!data.name && !data.phone) return;
+      setForm(f => ({
+        ...f,
+        name: data.name || f.name,
+        phone: data.phone || f.phone
+      }));
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const handle = (k: string, v: string) => {
@@ -374,7 +389,7 @@ function FurnitureOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
     setForm(f => ({ ...f, [k]: val }));
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Advanced Name Validation

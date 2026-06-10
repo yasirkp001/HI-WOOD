@@ -17,27 +17,24 @@ const AppointmentSection = () => {
   });
   const [phoneError, setPhoneError] = useState('');
 
-  // Prefill user details from cookies if accepted
+  // Prefill user details from cookies if accepted.
+  // Deferred to a task so the update lands after hydration instead of cascading a sync re-render.
   useEffect(() => {
-    const data = getUserDataFromCookies();
-    if (data.name) {
-      const parts = data.name.trim().split(/\s+/);
+    const timer = setTimeout(() => {
+      const data = getUserDataFromCookies();
+      if (!data.name && !data.email && !data.phone) return;
+      const parts = (data.name || '').trim().split(/\s+/);
       const first = parts[0] || '';
       const last = parts.slice(1).join(' ') || '';
       setFormData(prev => ({
         ...prev,
-        firstName: first,
-        lastName: last,
+        firstName: first || prev.firstName,
+        lastName: last || prev.lastName,
         email: data.email || prev.email,
         phone: data.phone || prev.phone
       }));
-    } else {
-      setFormData(prev => ({
-        ...prev,
-        email: data.email || prev.email,
-        phone: data.phone || prev.phone
-      }));
-    }
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -56,7 +53,7 @@ const AppointmentSection = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { firstName, lastName, email, phone, service } = formData;
     
