@@ -170,12 +170,13 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                 <div className="absolute inset-0 bg-black/10"></div>
                 
                 {service.specs && (
-                  <div className="absolute inset-x-6 bottom-6">
-                    <div className="bg-white/95 rounded-[32px] p-8 border border-neutral-200 shadow-xl transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                  <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
+                    {/* Specs card: always visible on touch devices, hover-revealed on desktop */}
+                    <div className="bg-white/95 rounded-[24px] sm:rounded-[32px] p-5 sm:p-8 border border-neutral-200 shadow-xl transform translate-y-0 opacity-100 lg:translate-y-4 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 transition-all duration-300">
                       <h4 className="text-neutral-900 text-lg font-bold mb-6 flex items-center justify-between">
                         Specifications <ChevronRight size={18} className="text-primary" />
                       </h4>
-                      <div className="grid grid-cols-2 gap-x-8 gap-y-6">
+                      <div className="grid grid-cols-2 gap-x-4 sm:gap-x-8 gap-y-4 sm:gap-y-6">
                         {service.specs?.map((spec: ServiceSpec, i: number) => (
                           <div key={i} className="border-l-2 border-primary/50 pl-4">
                             <p className="text-[10px] font-black uppercase tracking-widest text-neutral-500 mb-1">{spec.label}</p>
@@ -199,7 +200,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
             <div className="flex flex-col lg:flex-row gap-20 items-center">
               <div className="lg:w-1/2">
                 <h3 className="text-primary font-bold text-xs tracking-[0.4em] uppercase mb-6">Advanced Technology</h3>
-                <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-10 leading-[0.9]">PRECISION <br /> MACHINERY</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter mb-10 leading-[0.9]">PRECISION <br /> MACHINERY</h2>
                 <div className="space-y-8">
                   {[
                     { title: "Vertical Band Saws", desc: "High-speed vertical cutting for large logs with minimal kerf loss." },
@@ -256,7 +257,7 @@ export default function ServiceDetailClient({ id }: ServiceDetailClientProps) {
                 Our Process
                 <span className="w-12 h-[1px] bg-accent/50"></span>
               </h3>
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tight mb-6">
                 OUR <span className="text-primary">{service.title}</span> WORKFLOW
               </h2>
               <p className="text-neutral-500 text-lg">A meticulous journey ensuring precision and excellence in every step.</p>

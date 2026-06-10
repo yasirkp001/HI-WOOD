@@ -86,7 +86,7 @@ const VideoBannerSection = () => {
 
           {/* Main Typography */}
           <div className="text-center px-4">
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white drop-shadow-2xl [font-family:Montserrat,Manrope,sans-serif] leading-[1.1]">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white drop-shadow-2xl [font-family:Montserrat,Manrope,sans-serif] leading-[1.1]">
               FIND THE PERFECT <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-500 group-hover:text-white transition-colors duration-700">
                 WOODWORK

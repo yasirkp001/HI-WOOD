@@ -70,7 +70,7 @@ const TestimonialsSection = () => {
                 {pageData.map((item) => (
                   <div
                     key={item.id}
-                    className={`flex flex-col items-center text-center p-10 md:p-14 rounded-[2.5rem] border border-black/5 hover:border-primary/25 transition-all duration-500 shadow-xs hover:shadow-xl ${
+                    className={`flex flex-col items-center text-center p-6 sm:p-10 md:p-14 rounded-[2rem] sm:rounded-[2.5rem] border border-black/5 hover:border-primary/25 transition-all duration-500 shadow-xs hover:shadow-xl ${
                       item.featured ? 'bg-[#F2F1EA]/85' : 'bg-neutral-50/50'
                     }`}
                   >

@@ -27,12 +27,12 @@ export default function NotFound() {
 
       <div className="max-w-3xl w-full text-center relative z-10">
         <div className="mb-12 relative inline-block">
-          <h1 className="text-[12rem] md:text-[20rem] font-black leading-none tracking-tighter text-neutral-100 select-none">
+          <h1 className="text-[7rem] sm:text-[12rem] md:text-[20rem] font-black leading-none tracking-tighter text-neutral-100 select-none">
             404
           </h1>
           <div className="absolute inset-0 flex items-center justify-center">
              <div className="h-px w-24 bg-primary/50 absolute -left-12 hidden md:block"></div>
-             <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-widest text-neutral-900">
+             <h2 className="text-2xl sm:text-4xl md:text-6xl font-bold uppercase tracking-widest text-neutral-900">
                 PAGE <br /> <span className="text-primary">NOT FOUND</span>
              </h2>
              <div className="h-px w-24 bg-primary/50 absolute -right-12 hidden md:block"></div>

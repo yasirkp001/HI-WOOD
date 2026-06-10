@@ -104,9 +104,9 @@ const AppointmentSection = () => {
   };
 
   return (
-    <section 
+    <section
       id="contact"
-      className="relative w-full py-24 px-6 md:px-12 flex items-center justify-center min-h-screen overflow-hidden"
+      className="relative w-full py-24 px-4 sm:px-6 md:px-12 flex items-center justify-center min-h-screen overflow-hidden"
     >
       <Image
         src="/images/appointment-bg.jpg"
@@ -121,13 +121,13 @@ const AppointmentSection = () => {
       <div className="absolute inset-0 bg-black/20" />
 
       {/* Main Card */}
-      <div className="relative z-10 w-full max-w-3xl bg-white/95 border border-black/10 rounded-[40px] p-12 md:p-16 shadow-2xl" style={{ colorScheme: 'light' }}>
-        <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-12 tracking-tight uppercase [font-family:Montserrat,sans-serif]">
+      <div className="relative z-10 w-full max-w-3xl bg-white/95 border border-black/10 rounded-[32px] sm:rounded-[40px] p-6 sm:p-10 md:p-16 shadow-2xl" style={{ colorScheme: 'light' }}>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-900 text-center mb-8 sm:mb-12 tracking-tight uppercase [font-family:Montserrat,sans-serif]">
           MAKE AN <span className="text-accent">APPOINTMENT</span>
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <div className="flex flex-col justify-end">
               <label className="block text-[10px] font-black uppercase tracking-widest text-primary mb-1.5 ml-1">First Name</label>
               <input 
@@ -197,7 +197,7 @@ const AppointmentSection = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center gap-10 pt-6">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-10 pt-6">
             <button 
               type="submit" 
               className="w-full md:w-auto bg-primary hover:bg-accent text-white text-[11px] font-bold tracking-widest uppercase px-12 py-5 rounded-full transition-all duration-300 shadow-xl"

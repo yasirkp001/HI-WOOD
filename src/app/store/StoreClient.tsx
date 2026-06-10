@@ -41,7 +41,7 @@ export default function StoreClient() {
                 Our Network
               </p>
             </div>
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-[0.9] tracking-tighter">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-8 leading-[0.9] tracking-tighter">
               EXPLORE OUR <br /> <span className="text-primary">LOCATIONS</span>
             </h1>
             <p className="text-neutral-500 text-lg md:text-xl font-light max-w-xl leading-relaxed">
@@ -65,10 +65,10 @@ export default function StoreClient() {
                 className="w-full"
               >
                 {/* Branch Details */}
-                <div className="w-full space-y-10 bg-white/20 backdrop-blur-xl rounded-[2.5rem] border border-black/5 p-8 md:p-12 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+                <div className="w-full space-y-10 bg-white/20 backdrop-blur-xl rounded-[2rem] md:rounded-[2.5rem] border border-black/5 p-6 sm:p-8 md:p-12 hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
                   <div>
                     <h3 className="text-[10px] font-bold tracking-[0.4em] uppercase text-primary mb-4">Experience Center</h3>
-                    <h2 className="text-5xl md:text-6xl font-bold text-neutral-900 mb-6 tracking-tighter">{branch.city}</h2>
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-neutral-900 mb-6 tracking-tighter">{branch.city}</h2>
                     <p className="text-neutral-500 text-lg font-light leading-relaxed">
                       Our {branch.city} branch showcases our flagship collection and provides expert consultation for all your timber needs.
                     </p>
@@ -117,7 +117,7 @@ export default function StoreClient() {
       {/* CTA Section */}
       <section className="py-32 bg-white">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-neutral-900 mb-8 tracking-tighter">CAN&apos;T FIND A BRANCH NEAR YOU?</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold text-neutral-900 mb-8 tracking-tighter">CAN&apos;T FIND A BRANCH NEAR YOU?</h2>
           <p className="text-neutral-500 mb-12 text-lg font-light max-w-2xl mx-auto">
             Don&apos;t worry, we provide shipping and consultation services across India. Get in touch with our head office for remote assistance.
           </p>

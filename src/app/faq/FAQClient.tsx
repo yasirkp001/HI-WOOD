@@ -93,7 +93,7 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="pb-8 pr-12 text-neutral-500 leading-relaxed font-light text-base md:text-lg">
+            <div className="pb-8 pr-0 md:pr-12 text-neutral-500 leading-relaxed font-light text-base md:text-lg">
               {answer}
             </div>
           </motion.div>
@@ -112,7 +112,7 @@ export default function FAQPage() {
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,rgba(0,166,81,0.05)_0%,transparent_50%)]"></div>
-        <div className="container mx-auto px-8 relative z-10 text-center">
+        <div className="container mx-auto px-5 sm:px-8 relative z-10 text-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -122,7 +122,7 @@ export default function FAQPage() {
               <HelpCircle className="text-primary" size={14} />
               <p className="text-[10px] font-black tracking-[0.3em] uppercase text-neutral-500">Knowledge Base</p>
             </div>
-            <h1 className="text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter mb-8 uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black leading-[0.9] tracking-tighter mb-8 uppercase">
               FREQUENTLY ASKED <br /> 
               <span className="text-primary">QUESTIONS</span>
             </h1>
@@ -135,7 +135,7 @@ export default function FAQPage() {
 
       {/* FAQ Accordion Section */}
       <section className="pb-32">
-        <div className="container mx-auto px-8 max-w-5xl">
+        <div className="container mx-auto px-5 sm:px-8 max-w-5xl">
           <div className="space-y-24">
             {faqData.map((section, sectionIdx) => (
               <motion.div 
@@ -152,7 +152,7 @@ export default function FAQPage() {
                     <div className="w-12 h-[1px] bg-black/10"></div>
                   </div>
                 </div>
-                <div className="lg:col-span-8 bg-neutral-50 rounded-[2.5rem] p-8 md:p-12 border border-black/5 shadow-2xl">
+                <div className="lg:col-span-8 bg-neutral-50 rounded-[2rem] md:rounded-[2.5rem] p-5 sm:p-8 md:p-12 border border-black/5 shadow-2xl">
                   {section.questions.map((item) => (
                     <FAQItem 
                       key={item.id}
@@ -172,8 +172,8 @@ export default function FAQPage() {
       {/* CTA Section */}
       <section className="py-32 bg-neutral-50 border-y border-black/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/wood-texture-pattern.png')] opacity-[0.02] pointer-events-none"></div>
-        <div className="container mx-auto px-8 text-center relative z-10">
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">STILL HAVE QUESTIONS?</h2>
+        <div className="container mx-auto px-5 sm:px-8 text-center relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">STILL HAVE QUESTIONS?</h2>
           <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto mb-12 leading-relaxed">
             Our team of wood experts is ready to help you with your specific requirements or any technical queries you may have.
           </p>

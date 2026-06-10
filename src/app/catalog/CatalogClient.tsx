@@ -200,7 +200,7 @@ function CatalogContent() {
       {/* Hero Section */}
       <section className="relative py-24 md:py-32 overflow-hidden border-b border-black/5">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 pointer-events-none"></div>
-        <div className="container mx-auto px-8 relative z-10">
+        <div className="container mx-auto px-5 sm:px-8 relative z-10">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -210,7 +210,7 @@ function CatalogContent() {
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></div>
               <p className="text-[10px] font-black tracking-[0.2em] uppercase text-primary">The Full Collection</p>
             </div>
-            <h1 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-10 uppercase">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter mb-8 md:mb-10 uppercase">
               EXPLORE OUR <br /> 
               <span className="text-neutral-400">CATALOG</span>
             </h1>
@@ -223,7 +223,7 @@ function CatalogContent() {
 
       {/* Filter & Search Bar */}
       <section className="sticky top-20 z-40 bg-white border-b border-black/5 py-6">
-        <div className="container mx-auto px-8">
+        <div className="container mx-auto px-5 sm:px-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
             {/* Categories */}
             <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0 w-full lg:w-auto no-scrollbar">
@@ -267,7 +267,7 @@ function CatalogContent() {
 
       {/* Product Grid */}
       <section className="py-20">
-        <div className="container mx-auto px-8">
+        <div className="container mx-auto px-5 sm:px-8">
           {filteredItems.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               <AnimatePresence mode="popLayout">
@@ -298,8 +298,8 @@ function CatalogContent() {
                         </div>
                       </div>
  
-                      {/* Content Overlay */}
-                      <div className="absolute inset-x-0 bottom-0 p-8 translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
+                      {/* Content Overlay — fully visible on touch devices, hover-revealed on desktop */}
+                      <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 translate-y-0 lg:translate-y-6 lg:group-hover:translate-y-0 transition-transform duration-500">
                         <div className="mb-4">
                           <div className="flex gap-1 mb-3">
                             {[...Array(5)].map((_, i) => (
@@ -314,12 +314,12 @@ function CatalogContent() {
                           <h3 className="text-xl font-black text-white uppercase tracking-tight mb-2">
                             {item.name}
                           </h3>
-                          <p className="text-[11px] text-white/80 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 line-clamp-2">
+                          <p className="text-[11px] text-white/80 font-medium leading-relaxed opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 delay-100 line-clamp-2">
                             {item.description}
                           </p>
                         </div>
  
-                        <div className="flex gap-3 pt-4 border-t border-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                        <div className="flex gap-3 pt-4 border-t border-white/20 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 delay-200">
                           <a 
                             href={`https://wa.me/${phoneNumber}?text=Hi! I'm interested in customizing the ${item.name} from your catalog.`}
                             target="_blank"
@@ -369,8 +369,8 @@ function CatalogContent() {
 
       {/* CTA Section */}
       <section className="py-32 bg-neutral-50 border-y border-black/5">
-        <div className="container mx-auto px-8 text-center">
-          <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">HAVE A CUSTOM DESIGN?</h2>
+        <div className="container mx-auto px-5 sm:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">HAVE A CUSTOM DESIGN?</h2>
           <p className="text-neutral-500 text-lg font-light max-w-2xl mx-auto mb-12">
             If you have a specific design in mind that isn&apos;t in our catalog, we can build it for you. Send us your requirements or sketches.
           </p>

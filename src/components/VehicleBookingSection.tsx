@@ -155,7 +155,7 @@ const VehicleBookingSection = () => {
                 className="group bg-white rounded-[32px] overflow-hidden border border-black/5 hover:border-primary/30 transition-all duration-500 flex flex-col lg:flex-row shadow-xl w-full"
               >
                 {/* Image Side */}
-                <div className="lg:w-2/5 relative overflow-hidden h-[450px] sm:h-[550px] lg:h-auto">
+                <div className="lg:w-2/5 relative overflow-hidden h-[280px] sm:h-[450px] md:h-[550px] lg:h-auto">
                   <Image
                     src={vehicle.image}
                     alt={vehicle.name}
@@ -201,7 +201,7 @@ const VehicleBookingSection = () => {
                   </div>
 
                   {/* Specs Grid */}
-                  <div className="grid grid-cols-2 gap-4 mb-8 border-y border-black/5 py-6">
+                  <div className="grid grid-cols-1 min-[420px]:grid-cols-2 gap-4 mb-8 border-y border-black/5 py-6">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-xl bg-neutral-100 flex items-center justify-center shrink-0">
                         <Layers size={18} className="text-primary" />

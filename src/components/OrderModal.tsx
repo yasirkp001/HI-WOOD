@@ -119,7 +119,7 @@ function MillsOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
 
   return (
     <form onSubmit={submit} className="space-y-5">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className={labelCls}>Full Name</label>
           <div className="relative">
@@ -151,7 +151,7 @@ function MillsOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
         </select>
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 min-[400px]:grid-cols-3 gap-3">
         <div>
           <label className={labelCls}>Length (ft)</label>
           <input required type="number" min="1" className={inputCls} placeholder="e.g. 8" value={form.length} onChange={e => handle("length", e.target.value)} />
@@ -166,7 +166,7 @@ function MillsOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className={labelCls}>Quantity (Pieces)</label>
           <div className="relative">
@@ -272,7 +272,7 @@ function TransportOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
 
   return (
     <form onSubmit={submit} className="space-y-5">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className={labelCls}>Full Name</label>
           <div className="relative">
@@ -308,7 +308,7 @@ function TransportOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className={labelCls}>Load Type</label>
           <div className="relative">
@@ -427,7 +427,7 @@ function FurnitureOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
 
   return (
     <form onSubmit={submit} className="space-y-5">
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className={labelCls}>Full Name</label>
           <div className="relative">
@@ -447,7 +447,7 @@ function FurnitureOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className={labelCls}>Furniture Type</label>
           <select required className={inputCls} value={form.type} onChange={e => handle("type", e.target.value)}>
@@ -474,7 +474,7 @@ function FurnitureOrderForm({ onSubmit }: { onSubmit: (msg: string) => void }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className={labelCls}>Length (ft)</label>
           <input type="number" min="1" className={inputCls} placeholder="e.g. 6" value={form.length} onChange={e => handle("length", e.target.value)} />
@@ -552,7 +552,7 @@ export default function OrderModal({ isOpen, onClose, serviceType }: OrderModalP
             className="relative bg-white rounded-[32px] w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl"
           >
             {/* Header gradient strip */}
-            <div className={`bg-gradient-to-br ${meta.color} rounded-t-[32px] px-8 pt-8 pb-6 border-b border-neutral-100`}>
+            <div className={`bg-gradient-to-br ${meta.color} rounded-t-[32px] px-5 sm:px-8 pt-8 pb-6 border-b border-neutral-100`}>
               <button
                 onClick={onClose}
                 className="absolute top-5 right-5 w-9 h-9 rounded-full bg-neutral-100 hover:bg-neutral-200 flex items-center justify-center text-neutral-500 transition-colors"
@@ -564,7 +564,7 @@ export default function OrderModal({ isOpen, onClose, serviceType }: OrderModalP
               <p className="text-xs text-neutral-500 mt-1">{meta.subtitle}</p>
             </div>
 
-            <div className="px-8 py-6">
+            <div className="px-5 sm:px-8 py-6">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}

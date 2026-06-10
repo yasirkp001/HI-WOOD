@@ -77,7 +77,7 @@ function BookingForm() {
                 Reservations
               </p>
             </div>
-            <h1 className="text-5xl font-bold text-neutral-900 mb-8 leading-tight uppercase">
+            <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-8 leading-tight uppercase">
               BOOK YOUR <br /> <span className="text-primary">CONSULTATION</span>
             </h1>
             <p className="text-neutral-500 mb-12 text-lg font-light leading-relaxed">
@@ -113,7 +113,7 @@ function BookingForm() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-neutral-100"
+            className="bg-white rounded-[2rem] md:rounded-[2.5rem] p-5 sm:p-8 md:p-12 shadow-[0_30px_100px_rgba(0,0,0,0.05)] border border-neutral-100"
           >
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

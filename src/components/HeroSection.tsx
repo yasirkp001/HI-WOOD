@@ -55,18 +55,18 @@ const HeroSection = () => {
               </p>
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tighter mb-10 text-white uppercase">
+            <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tighter mb-8 sm:mb-10 text-white uppercase">
               THE ART OF <br />
               <span className="text-primary">PRECISION</span> <br />
               TIMBER
             </motion.h1>
             
-            <motion.p variants={itemVariants} className="max-w-xl text-lg text-white/90 font-light leading-relaxed mb-12 border-l-2 border-primary/30 pl-8">
+            <motion.p variants={itemVariants} className="max-w-xl text-base sm:text-lg text-white/90 font-light leading-relaxed mb-10 sm:mb-12 border-l-2 border-primary/30 pl-5 sm:pl-8">
               From advanced kiln-seasoning to bespoke artisanal furniture, we transform nature&apos;s finest logs into architectural masterpieces for generations.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-8">
-              <Link href="/contact" className="group flex items-center gap-4 bg-primary hover:bg-accent text-white text-[11px] font-bold tracking-[0.2em] uppercase px-12 py-5 rounded-sm transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+              <Link href="/contact" className="group flex items-center justify-center gap-4 bg-primary hover:bg-accent text-white text-[11px] font-bold tracking-[0.2em] uppercase px-8 py-4 sm:px-12 sm:py-5 rounded-sm transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1">
                 Request A Quote
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>

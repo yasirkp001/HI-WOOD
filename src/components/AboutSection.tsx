@@ -55,9 +55,9 @@ const AboutSection = () => {
                 whileInView={{ scale: 1, rotate: 0 }}
                 viewport={{ once: true, amount: 0.5 }}
                 transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
-                className="absolute -bottom-10 -right-10 w-40 h-40 xl:w-48 xl:h-48 rounded-full bg-white border border-neutral-100 flex flex-col items-center justify-center text-neutral-900 shadow-[0_20px_50px_rgba(0,0,0,0.1)] z-20"
+                className="absolute -bottom-8 right-2 w-32 h-32 sm:-bottom-10 sm:-right-10 sm:w-40 sm:h-40 xl:w-48 xl:h-48 rounded-full bg-white border border-neutral-100 flex flex-col items-center justify-center text-neutral-900 shadow-[0_20px_50px_rgba(0,0,0,0.1)] z-20"
               >
-                <span className="text-5xl xl:text-6xl font-medium mb-1 text-accent">
+                <span className="text-4xl sm:text-5xl xl:text-6xl font-medium mb-1 text-accent">
                   30
                 </span>
                 <span className="text-[9px] xl:text-[10px] font-bold tracking-[0.15em] uppercase text-center leading-tight text-neutral-500">
@@ -83,12 +83,12 @@ const AboutSection = () => {
                 </p>
               </div>
 
-              <h2 className="text-[2.6rem] lg:text-[4rem] font-bold text-neutral-900 leading-[1.05] mb-8 tracking-tighter">
+              <h2 className="text-3xl sm:text-[2.6rem] lg:text-[4rem] font-bold text-neutral-900 leading-[1.05] mb-8 tracking-tighter">
                 THE ART OF <br />
                 <span className="text-primary">PREMIUM WOODWORKING</span>
               </h2>
 
-              <p className="text-lg text-neutral-600 leading-relaxed font-light mb-12 border-l-2 border-primary/30 pl-8">
+              <p className="text-base sm:text-lg text-neutral-600 leading-relaxed font-light mb-12 border-l-2 border-primary/30 pl-5 sm:pl-8">
                 Since 1998, HI WOOD has been at the forefront of Kerala&apos;s timber industry. We specialize in the complete lifecycle of wood—from sourcing sustainable logs and advanced kiln-seasoning to the creation of bespoke furniture that lasts a lifetime. Our process blends the wisdom of traditional artisans with the precision of modern industrial milling.
               </p>
             </MotionDiv>

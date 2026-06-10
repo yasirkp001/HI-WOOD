@@ -121,7 +121,7 @@ export default function ContactClient() {
         <div className="absolute inset-0 bg-black/60"></div>
         
         <div className="relative z-10 container mx-auto px-6 text-center">
-          <h1 className="text-6xl md:text-8xl font-black mb-4 tracking-tighter uppercase text-white [font-family:Montserrat,sans-serif]">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-black mb-4 tracking-tighter uppercase text-white [font-family:Montserrat,sans-serif]">
             CONTACTS
           </h1>
           <div className="flex items-center justify-center gap-4 text-gray-300 uppercase tracking-widest text-xs font-bold">
@@ -133,14 +133,14 @@ export default function ContactClient() {
       </section>
 
       {/* Main Content */}
-      <section className="py-24 container mx-auto px-6 md:px-12">
-        <div className="flex flex-col lg:flex-row gap-20">
+      <section className="py-16 md:py-24 container mx-auto px-5 sm:px-6 md:px-12">
+        <div className="flex flex-col lg:flex-row gap-14 lg:gap-20">
           
           {/* Left Side: Contact Info */}
           <div className="w-full lg:w-1/2 space-y-12">
             <div>
               <p className="text-sand font-bold text-xs tracking-[0.3em] uppercase mb-4">Contact Form</p>
-              <h2 className="text-4xl md:text-5xl font-black uppercase leading-tight mb-8 [font-family:Montserrat,sans-serif]">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight mb-8 [font-family:Montserrat,sans-serif]">
                 HAVE A QUESTIONS? <br /> CONTACT US NOW
               </h2>
               <p className="text-gray-500 leading-relaxed max-w-md">
@@ -167,14 +167,14 @@ export default function ContactClient() {
                 <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-sand group-hover:bg-sand group-hover:text-black transition-all duration-300">
                   <Mail size={20} />
                 </div>
-                <span className="text-lg font-bold tracking-tight uppercase">support@hiwood.com</span>
+                <span className="text-base sm:text-lg font-bold tracking-tight uppercase break-all">support@hiwood.com</span>
               </div>
             </div>
           </div>
 
           {/* Right Side: Form */}
           <div className="w-full lg:w-1/2">
-            <div className="bg-[#F9F8F3] rounded-[40px] p-8 md:p-12 shadow-sm">
+            <div className="bg-[#F9F8F3] rounded-[32px] md:rounded-[40px] p-5 sm:p-8 md:p-12 shadow-sm">
               <form onSubmit={handleSubmit} className="light-form space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div className="relative">

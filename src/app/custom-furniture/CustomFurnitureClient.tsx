@@ -71,7 +71,7 @@ export default function CustomFurnitureClient() {
           </div>
           
           <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 translate-x-1/4 pointer-events-none"></div>
-          <div className="container mx-auto px-8 relative z-10">
+          <div className="container mx-auto px-5 sm:px-8 relative z-10">
             <div className="max-w-3xl">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ export default function CustomFurnitureClient() {
 
         {/* Features Grid */}
         <section className="py-32 bg-neutral-50 relative">
-          <div className="container mx-auto px-8">
+          <div className="container mx-auto px-5 sm:px-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
               {features.map((f, i) => (
                 <motion.div 
@@ -143,14 +143,14 @@ export default function CustomFurnitureClient() {
         </section>
         {/* Wood Palette Section */}
         <section className="py-32 bg-white">
-          <div className="container mx-auto px-8">
+          <div className="container mx-auto px-5 sm:px-8">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-20">
               <div className="max-w-2xl">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-[1px] bg-primary"></div>
                   <span className="text-[10px] font-black tracking-[0.3em] uppercase text-primary">The Foundation of Quality</span>
                 </div>
-                <h2 className="text-4xl md:text-7xl font-black text-neutral-900 tracking-tighter uppercase leading-[0.9]">
+                <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-neutral-900 tracking-tighter uppercase leading-[0.9]">
                   OUR WOOD <br /> <span className="text-neutral-400">PALETTE</span>
                 </h2>
               </div>
@@ -206,9 +206,9 @@ export default function CustomFurnitureClient() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-neutral-50 border border-black/5 rounded-[40px] p-8 md:p-12 shadow-2xl"
+              className="bg-neutral-50 border border-black/5 rounded-[32px] md:rounded-[40px] p-5 sm:p-8 md:p-12 shadow-2xl"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                 {/* Inputs */}
                 <div className="lg:col-span-7 space-y-8">
                   <div>
@@ -281,7 +281,7 @@ export default function CustomFurnitureClient() {
                 </div>
 
                 {/* Summary / Booking Card */}
-                <div className="lg:col-span-5 bg-white border border-black/5 rounded-[32px] p-8 shadow-xl flex flex-col justify-between h-full min-h-[300px]">
+                <div className="lg:col-span-5 bg-white border border-black/5 rounded-[24px] sm:rounded-[32px] p-5 sm:p-8 shadow-xl flex flex-col justify-between h-full min-h-[300px]">
                   <div className="space-y-6">
                     <div className="border-b border-black/5 pb-4">
                       <span className="text-[9px] font-black uppercase tracking-widest text-neutral-400">Selected Selection</span>
@@ -351,9 +351,9 @@ export default function CustomFurnitureClient() {
 
         {/* Process Section */}
         <section className="py-32 relative bg-white">
-          <div className="container mx-auto px-8">
+          <div className="container mx-auto px-5 sm:px-8">
             <div className="text-center mb-24">
-              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6">THE JOURNEY OF <br /><span className="text-primary">YOUR FURNITURE</span></h2>
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6">THE JOURNEY OF <br /><span className="text-primary">YOUR FURNITURE</span></h2>
               <p className="text-neutral-500 text-sm max-w-xl mx-auto">From the first sketch to the final polish, here is how we bring your vision to life.</p>
             </div>
 
@@ -386,7 +386,7 @@ export default function CustomFurnitureClient() {
 
         {/* Legacy & Innovation Section */}
         <section className="py-32 relative overflow-hidden bg-white">
-          <div className="container mx-auto px-8">
+          <div className="container mx-auto px-5 sm:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <motion.div 
                 initial={{ opacity: 0, x: -30 }}
@@ -428,7 +428,7 @@ export default function CustomFurnitureClient() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="text-5xl md:text-7xl font-black text-neutral-900 tracking-tighter uppercase leading-[0.9] mb-8"
+                    className="text-4xl sm:text-5xl md:text-7xl font-black text-neutral-900 tracking-tighter uppercase leading-[0.9] mb-8"
                   >
                     LEGACY & <br /> <span className="text-neutral-400">INNOVATION</span>
                   </motion.h2>
@@ -469,11 +469,11 @@ export default function CustomFurnitureClient() {
 
         {/* Quote Form Section */}
         <section id="quote-form" className="py-32 relative">
-          <div className="container mx-auto px-8 max-w-5xl">
+          <div className="container mx-auto px-5 sm:px-8 max-w-5xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
               <div className="space-y-10">
                 <div>
-                  <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">START YOUR <br />PROJECT</h2>
+                  <h2 className="text-3xl sm:text-4xl md:text-6xl font-black uppercase tracking-tighter leading-none mb-6">START YOUR <br />PROJECT</h2>
                   <p className="text-neutral-500 text-sm leading-relaxed max-w-sm">
                     Fill out the form below or send us a sketch on WhatsApp. Our design experts will get back to you within 24 hours with a custom quote.
                   </p>
@@ -501,7 +501,7 @@ export default function CustomFurnitureClient() {
                 </div>
               </div>
 
-              <div className="bg-neutral-50 border border-black/5 rounded-[40px] p-10 md:p-12 shadow-2xl">
+              <div className="bg-neutral-50 border border-black/5 rounded-[32px] md:rounded-[40px] p-5 sm:p-10 md:p-12 shadow-2xl">
                 <form 
                   className="space-y-6" 
                   onSubmit={(e) => {

@@ -43,7 +43,7 @@ const TimberProductionSection = () => {
             <h3 className="text-primary font-bold text-xs md:text-sm tracking-[0.2em] uppercase mb-6">
               THE POSSIBILITY OF WOOD FORESTRY
             </h3>
-            <h2 className="text-neutral-900 text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight uppercase max-w-4xl mx-auto [font-family:Montserrat,Manrope,sans-serif]">
+            <h2 className="text-neutral-900 text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight uppercase max-w-4xl mx-auto [font-family:Montserrat,Manrope,sans-serif]">
               RESPONSIBLE TIMBER <br /> PRODUCTION
             </h2>
           </div>

@@ -64,7 +64,7 @@ const PopularFurniture = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-      <div className="container mx-auto px-8 relative z-10">
+      <div className="container mx-auto px-5 sm:px-8 relative z-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="max-w-2xl">
@@ -81,7 +81,7 @@ const PopularFurniture = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-black text-neutral-900 tracking-tighter uppercase leading-none"
+              className="text-3xl sm:text-4xl md:text-6xl font-black text-neutral-900 tracking-tighter uppercase leading-none"
             >
               POPULAR <br /> <span className="text-neutral-400">COLLECTIONS</span>
             </motion.h2>
@@ -124,8 +124,8 @@ const PopularFurniture = () => {
                   {item.category}
                 </div>
 
-                {/* Content Overlay */}
-                <div className="absolute inset-x-0 bottom-0 p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                {/* Content Overlay — fully visible on touch devices, hover-revealed on desktop */}
+                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0 transition-transform duration-500">
                   <div className="flex justify-between items-end mb-4">
                     <div>
                       <div className="flex gap-1 mb-3">
@@ -141,13 +141,13 @@ const PopularFurniture = () => {
                       <h3 className="text-xl font-black text-white uppercase tracking-tight mb-2">
                         {item.name}
                       </h3>
-                      <p className="text-[11px] text-white/80 font-medium leading-relaxed max-w-[200px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                      <p className="text-[11px] text-white/80 font-medium leading-relaxed max-w-[200px] opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 delay-100">
                         {item.description}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-3 pt-4 border-t border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+                  <div className="flex gap-3 pt-4 border-t border-white/10 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 delay-200">
                     <button 
                       onClick={() => document.getElementById('quote-form')?.scrollIntoView({ behavior: 'smooth' })}
                       className="flex-1 py-3 bg-white text-black text-[9px] font-black uppercase tracking-widest rounded-xl hover:bg-primary hover:text-white transition-colors"
